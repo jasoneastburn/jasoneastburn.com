@@ -1,0 +1,40 @@
+@font-face {
+  font-family: quoteFont;
+  src: url("../../../assets/fonts/sometimes.ttf");
+}
+
+.author {
+  width: 100%;
+  text-align: center;
+  margin-top: -5px;
+  color: var(--white);
+  background-color: var(--primary);
+  padding-bottom: 50px;
+  font-size: var(--fontNormal);
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  margin-top: -5px;
+  color: var(--white);
+  background-color: var(--primary);
+  font-size: var(--fontNormal);
+}
+
+.quote {
+  font-family: quoteFont;
+  text-align: center;
+  margin-top: -5px;
+  color: var(--white);
+  background-color: var(--primary);
+  padding-bottom: 20px;
+  font-size: 75px;
+}
+
+@media (max-width: 768px) {
+  .quote {
+    padding: 0 16px 0 16px;
+  }
+}

@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+  ion-router-outlet {
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  ion-router-outlet {
+    margin-top: 85px;
+  }
+}

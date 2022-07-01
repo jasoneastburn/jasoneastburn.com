@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="center">
+    <div class="title">Hello, friend!</div>
+    <div class="intro">First off, thanks for visiting my site! I suppose you want to get in touch with me? I'd love to
+      hear from you. Just fill out the form below and I will get back to you as soon as I can. Feel free to visit and
+      touch base with me on any of my socials or accounts below.</div>
+    <section>
+      <div class="flex-container">
+        <a href="https://twitter.com/jasoneastburn" target="_blank">
+          <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+        </a>
+        <a href="https://instagram.com/jasoneastburn" target="_blank">
+          <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+        </a>
+        <a href="https://www.linkedin.com/in/jasoneastburn/" target="_blank">
+          <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
+        </a>
+        <a href="https://github.com/jasoneastburn" target="_blank">
+          <fa-icon [icon]="['fab', 'github']"></fa-icon>
+        </a>
+        <a href="https://codepen.io/jasoneastburn" target="_blank">
+          <fa-icon [icon]="['fab', 'codepen']"></fa-icon>
+        </a>
+      </div>
+    </section>
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input placeholder="Jason Eastburn" required formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input placeholder="jasoneastburn@example.com" required formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Message</ion-label>
+        <ion-textarea rows="6" placeholder="Type your message here..." required formControlName="message">
+        </ion-textarea>
+      </ion-item>
+      <ion-button type="submit" [disabled]="!contactForm.valid">Submit</ion-button>
+      <ion-button (click)="clearForm()">Clear</ion-button>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

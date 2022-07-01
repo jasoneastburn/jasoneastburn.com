@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "jason-eastburn": {
+      "hosting": {
+        "app": [
+          "jason-eastburn"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "jason-eastburn"
+  }
+}

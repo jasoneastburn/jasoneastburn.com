@@ -1,0 +1,38 @@
+fa-icon {
+  font-size: var(--faNormal);
+}
+
+ion-button {
+  float: right;
+  margin-inline-start: 16px;
+  --background: var(--primary);
+}
+
+ion-item {
+  padding-block-end: 24px;
+}
+
+section {
+  display: table;
+  padding-block-start: 40px;
+  padding-block-end: 40px;
+  width: 75%;
+  margin: auto;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.intro {
+  font-size: var(--fontNormal);
+  line-height: 1.5;
+}
+
+.title {
+  font-size: var(--fontXLarge);
+  font-weight: var(--bold);
+  margin-block-end: 20px;
+}

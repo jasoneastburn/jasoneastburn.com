@@ -1,0 +1,61 @@
+<ion-content>
+  <div class="center">
+    <div class="flex-container">
+      <div class="flex-child">
+        <div class="title">JASON EASTBURN</div>
+        <div class="subtitle">Software Engineer in Kansas City</div>
+        <div class="social">
+          <a href="https://twitter.com/jasoneastburn" target="_blank">
+            <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+          </a>
+          <a href="https://instagram.com/jasoneastburn" target="_blank">
+            <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+          </a>
+          <a href="https://www.linkedin.com/in/jasoneastburn/" target="_blank">
+            <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
+          </a>
+          <a href="https://github.com/jasoneastburn" target="_blank">
+            <fa-icon [icon]="['fab', 'github']"></fa-icon>
+          </a>
+          <a href="https://codepen.io/jasoneastburn" target="_blank">
+            <fa-icon [icon]="['fab', 'codepen']"></fa-icon>
+          </a>
+        </div>
+      </div>
+      <div class="flex-child">
+        <img class="profile-photo" [src]="imageSource">
+      </div>
+    </div>
+    <div class="intro">
+      Hi, I'm Jason! Welcome to my digital slice of the world. I'm passionate about learning technology, creating
+      solutions to help people, and building a community. You can find me building and teaching random things here and
+      on
+      my <a href="https://github.com/jasoneastburn" target="_blank">Github</a> page. I'm often making really bad dad
+      jokes, sharing my sarcasm on social media, and playing the random game at home.
+      <br><br>
+      Interested in collaborating? <a routerLink="/" routerLink="/contact" routerLinkActive="active">Send me a
+        message</a>
+    </div>
+    <hr>
+    <div class="header">Latest Content</div>
+    <hr>
+    <div class="header">Projects</div>
+    <div *ngIf="projects$ | async as projects; else loading">
+      <div class="item" *ngFor='let project of projects'>
+        <a href="{{project.url ? project.url : '#'}}" target="{{project.url ? '_blank' : '_self'}}">
+          <div class="item-container">
+            <div class="item-icon">
+              <img class="item-image" src="{{project.icon}}">
+            </div>
+            <div class="item-title">{{project.title}}<span class="item-subtitle">{{project.subtitle}}</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner></ion-spinner>
+</ng-template>

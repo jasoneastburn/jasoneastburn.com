@@ -6,7 +6,7 @@
   </ion-header>
   <ion-content>
     <ion-menu-toggle *ngFor="let item of menuItems">
-      <ion-item button (click)="setTitle(item.title)" [routerLink]="item.path" routerDirection="root"
+      <ion-item button [routerLink]="item.path" routerDirection="root"
         routerLinkActive="active-item" [routerLinkActiveOptions]="{exact: true}">
         <ion-icon [name]="item.icon" slot="start"></ion-icon>
         {{ item.title }}
@@ -17,4 +17,4 @@
 
 <!-- Global App Header -->
 <app-header></app-header>
-<ion-router-outlet id="main" animated="false"></ion-router-outlet>
+<ion-router-outlet id="main" [animated]="false"></ion-router-outlet>

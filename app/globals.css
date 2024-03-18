@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -10,31 +15,15 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-**/
-:root {
-  --primaryColor: #0f172a;
-  --secondaryColor: #363a3f;
-  --accentColor: #86a492;
-  --fourthColor: #cbcbab;
-  --fifthColor: #e06128;
-}
 
-a {
-  @apply no-underline relative transition-[color] duration-[0.2s] ease-[ease] before:transition-[width] before:duration-[0.4s] before:ease-[cubic-bezier(0.51,0.18,0,0.88)] before:delay-[0.1s] after:transition-[width] after:duration-[0.2s] after:ease-[cubic-bezier(0.29,0.18,0.26,0.83)];
-}
-a:hover::after,
-a:hover::before {
-  @apply w-full left-0;
-}
-a::after,
-a::before {
-  @apply content-[""] absolute w-0 h-[3px] right-0 top-[calc(100%)];
-}
-a::before {
-  background: var(--accentColor);
-}
-a::after {
-  background: var(--accentColor);
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {

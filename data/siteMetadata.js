@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Jason Eastburn',
   author: 'Jason Eastburn',
   headerTitle: 'Jason Eastburn',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'Check out the most recent posts and projects from yours truly...',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.jasoneastburn.com',

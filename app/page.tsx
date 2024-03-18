@@ -5,5 +5,19 @@ import Main from './Main'
 export default async function Page() {
   const sortedPosts = sortPosts(allBlogs)
   const posts = allCoreContent(sortedPosts)
-  return <Main posts={posts} />
+  return (
+    <div>
+      <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+        Welcome!
+      </h1>
+      <p className="prose max-w-none divide-y divide-gray-200 pb-8 pt-8 dark:prose-invert dark:divide-gray-700 xl:col-span-2">
+        Hi, I'm Jason! Welcome to my digital slice of the world. I'm passionate about learning
+        technology, creating solutions to help people, and building a community. You can find me
+        building and teaching random things here and on my Github page. I'm often making really bad
+        dad jokes, sharing my sarcasm on social media, and playing the random game at home.
+      </p>
+
+      <Main posts={posts} />
+    </div>
+  )
 }

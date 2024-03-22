@@ -11,10 +11,11 @@ export default async function Page() {
         Welcome!
       </h1>
       <p className="prose max-w-none divide-y divide-gray-200 pb-8 pt-8 dark:prose-invert dark:divide-gray-700 xl:col-span-2">
-        Hi, I'm Jason! Welcome to my digital slice of the world. I'm passionate about learning
-        technology, creating solutions to help people, and building a community. You can find me
-        building and teaching random things here and on my Github page. I'm often making really bad
-        dad jokes, sharing my sarcasm on social media, and playing the random game at home.
+        Hi, I&apos;m Jason! Welcome to my digital slice of the world. I&apos;m passionate about
+        learning technology, creating solutions to help people, and building a community. You can
+        find me building and teaching random things here and on my Github page. I&apos;m often
+        making really bad dad jokes, sharing my sarcasm on social media, and playing the random game
+        at home.
       </p>
 
       <Main posts={posts} />

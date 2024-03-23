@@ -24,7 +24,7 @@ const config: Config = {
         sans: ['var(--font-roboto)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.indigo,
+        primary: colors[Object.keys(colors)[(Math.random() * Object.keys(colors).length) | 0]],
         gray: colors.gray,
       },
       typography: ({ theme }) => ({

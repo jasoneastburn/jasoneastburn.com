@@ -1,10 +1,19 @@
 import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import Main from './Main'
+import { signInAnonymously } from 'lib/firebase/auth'
+
+async function signIn() {
+  const response = await signInAnonymously()
+
+  return response
+}
 
 export default async function Page() {
   const sortedPosts = sortPosts(allBlogs)
   const posts = allCoreContent(sortedPosts)
+  const user = await signIn()
+  console.log(user)
   return (
     <div>
       <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">

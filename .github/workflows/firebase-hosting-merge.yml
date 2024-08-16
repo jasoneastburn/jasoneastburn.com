@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JASON_EASTBURN }}'
           channelId: live
           projectId: jason-eastburn
+        env:
+              FIREBASE_CLI_EXPERIMENTS: webframeworks

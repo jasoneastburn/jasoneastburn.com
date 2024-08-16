@@ -1,12 +1,5 @@
 {
   "projects": {
-    "default": "jason-eastburn"
-  },
-  "targets": {},
-  "etags": {
-    "jason-eastburn": {
-      "extensionInstances": {}
-    }
-  },
-  "dataconnectEmulatorConfig": {}
+    "default": "jason--eastburn"
+  }
 }

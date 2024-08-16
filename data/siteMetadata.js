@@ -14,7 +14,7 @@ const siteMetadata = {
   mastodon: '',
   email: 'jasoneastburn@gmail.com',
   github: 'https://github.com/jasoneastburn',
-  twitter: 'https://twitter.com/jasoneastburn',
+  twitter: 'https://x.com/jasoneastburn',
   facebook: 'https://facebook.com/jasoneastburn',
   youtube: 'https://youtube.com/channel/UCK9bWbp8I-exu4cD4qFTs8A',
   linkedin: 'https://www.linkedin.com/in/jasoneastburn',

@@ -6,6 +6,3 @@
 
 ### Deploy to Firebase Hosting
 1.
-
-~~~~
-

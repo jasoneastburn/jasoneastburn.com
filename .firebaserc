@@ -7,5 +7,6 @@
     "jason-eastburn": {
       "extensionInstances": {}
     }
-  }
+  },
+  "dataconnectEmulatorConfig": {}
 }

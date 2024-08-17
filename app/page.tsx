@@ -5,6 +5,8 @@ import { signInAnonymously } from 'lib/firebase/auth'
 import Quote from '@/components/Quote'
 import { getQuotes } from 'lib/firebase/firestore'
 
+export const dynamic = 'force-dynamic'
+
 async function signIn() {
   const response = await signInAnonymously()
 

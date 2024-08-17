@@ -40,14 +40,3 @@ export default async function Page() {
     </div>
   )
 }
-
-export async function getStaticProps() {
-  const quotes = await getQuotes()
-
-  return {
-    props: {
-      quotes,
-    },
-    revalidate: 5,
-  }
-}

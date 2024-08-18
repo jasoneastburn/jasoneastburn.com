@@ -8,15 +8,11 @@ import { getQuotes } from 'lib/firebase/firestore'
 export const dynamic = 'force-dynamic'
 
 async function signIn() {
-  const response = await signInAnonymously()
-
-  return response
+  return await signInAnonymously()
 }
 
 async function loadQuotes() {
-  const quotes = await getQuotes()
-
-  return quotes
+  return await getQuotes()
 }
 
 export default async function Page() {

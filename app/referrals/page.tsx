@@ -4,6 +4,7 @@ import { getReferrals } from 'lib/firebase/firestore'
 import _ from 'lodash'
 
 export const metadata = genPageMetadata({ title: 'Referrals' })
+export const dynamic = 'force-dynamic'
 
 async function loadReferrals() {
   return await getReferrals()

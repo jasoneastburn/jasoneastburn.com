@@ -71,7 +71,7 @@ export default async function Page() {
                           <a
                             href={i.link}
                             target="_blank"
-                            className="font-large text-l hover:text-primary-500 dark:hover:text-primary-400 hidden text-left text-gray-900 sm:block dark:text-gray-100"
+                            className="font-large text-l hover:text-primary-500 dark:hover:text-primary-400 text-left text-gray-900 dark:text-gray-100"
                           >
                             {i.name}
                           </a>

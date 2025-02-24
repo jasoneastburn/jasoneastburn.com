@@ -23,10 +23,10 @@ export default async function Page() {
 
   return (
     <div>
-      <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+      <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 dark:text-gray-100">
         Welcome!
       </h1>
-      <p className="prose max-w-none divide-y divide-gray-200 pb-8 pt-8 dark:prose-invert dark:divide-gray-700 xl:col-span-2">
+      <p className="prose dark:prose-invert max-w-none divide-y divide-gray-200 pt-8 pb-8 xl:col-span-2 dark:divide-gray-700">
         Hi, I&apos;m Jason! Welcome to my digital slice of the world. I&apos;m passionate about
         learning technology, creating solutions to help people, and building a community. You can
         find me building and teaching random things here and on my Github page. I&apos;m often

@@ -1,17 +1,7 @@
-import type { Config } from "tailwindcss";
+/* eslint-disable @typescript-eslint/no-require-imports */
 import colors from 'tailwindcss/colors'
-import { fontFamily } from 'tailwindcss/defaultTheme'
 
-const config: Config = {
-  content: [
-    './node_modules/pliny/**/*.js',
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,tsx}',
-    './components/**/*.{js,ts,tsx}',
-    './layouts/**/*.{js,ts,tsx}',
-    './data/**/*.mdx',
-  ],
-  darkMode: 'class',
+module.exports = {
   theme: {
     extend: {
       lineHeight: {
@@ -21,7 +11,8 @@ const config: Config = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-roboto)', ...fontFamily.sans],
+        roboto: ['Roboto', 'sans'],
+        sans: ['sans'],
       },
       colors: {
         primary: colors[Object.keys(colors)[(Math.random() * Object.keys(colors).length) | 0]],
@@ -31,21 +22,21 @@ const config: Config = {
         DEFAULT: {
           css: {
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('--color-primary-500'),
               '&:hover': {
-                color: `${theme('colors.primary.600')}`,
+                color: theme('--color-primary-600'),
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('--color-primary-400') },
             },
             'h1,h2': {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              letterSpacing: theme('--tracking-tight'),
             },
             h3: {
               fontWeight: '600',
             },
             code: {
-              color: theme('colors.indigo.500'),
+              color: theme('--color-indigo-500'),
             },
           },
         },
@@ -68,4 +59,3 @@ const config: Config = {
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
-export default config;

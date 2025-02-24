@@ -7,7 +7,7 @@ export default function Quote({ quotes }) {
   return (
     <div>
       <div className={`${quoteFont.className} text-center text-7xl`}>&quot;{quote.quote}&quot;</div>
-      <div className="pb-5 pt-2 text-center">—{quote.author}</div>
+      <div className="pt-2 pb-5 text-center">—{quote.author}</div>
     </div>
   )
 }

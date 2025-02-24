@@ -4,7 +4,9 @@ import { genPageMetadata } from 'app/seo'
 import { Authors, allAuthors } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
-export const metadata = genPageMetadata({ title: 'About' })
+export const metadata = genPageMetadata({
+  title: 'About'
+})
 
 export default function Page() {
   const author = allAuthors.find((p) => p.slug === 'default') as Authors

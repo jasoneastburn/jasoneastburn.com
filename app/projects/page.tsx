@@ -3,7 +3,9 @@ import { Project } from 'app/models/project'
 import { genPageMetadata } from 'app/seo'
 import { getProjects } from 'lib/firebase/firestore'
 
-export const metadata = genPageMetadata({ title: 'Projects' })
+export const metadata = genPageMetadata({
+  title: 'Projects'
+})
 async function loadProjects() {
   const response = await getProjects()
 

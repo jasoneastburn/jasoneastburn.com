@@ -21,11 +21,14 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
+
   title: {
     default: siteMetadata.title,
     template: `%s | ${siteMetadata.title}`,
   },
+
   description: siteMetadata.description,
+
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
@@ -35,12 +38,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+
   alternates: {
     canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
   },
+
   robots: {
     index: true,
     follow: true,
@@ -52,11 +57,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
   twitter: {
     title: siteMetadata.title,
     card: 'summary_large_image',
     images: [siteMetadata.socialBanner],
-  },
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

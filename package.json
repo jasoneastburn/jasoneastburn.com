@@ -4,31 +4,31 @@
   "private": true,
   "scripts": {
     "start": "next dev",
-    "dev": "cross-env INIT_CWD=$PWD next dev",
+    "dev": "cross-env INIT_CWD=$PWD next dev --turbopack",
     "build": "cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "14.1.0",
+    "@next/bundle-analyzer": "15.1.7",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.13",
-    "contentlayer": "0.3.4",
+    "contentlayer2": "^0.5.3",
     "esbuild": "0.18.11",
     "firebase": "^10.9.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.0",
     "lodash": "^4.17.21",
-    "next": "^13.4.1",
-    "next-contentlayer": "0.3.4",
+    "next": "15.1.7",
+    "next-contentlayer2": "^0.5.3",
     "next-themes": "^0.2.1",
-    "pliny": "0.1.7",
+    "pliny": "^0.4.1",
     "postcss": "^8.4.24",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^6.1.0",
     "rehype-citation": "^1.0.2",
@@ -37,7 +37,7 @@
     "rehype-prism-plus": "^1.6.0",
     "rehype-slug": "^5.1.0",
     "remark": "^14.0.2",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.1",
     "remark-math": "^5.1.1",
     "tailwindcss": "^3.4.1",
     "unist-util-visit": "^4.1.0"
@@ -46,12 +46,12 @@
     "@svgr/webpack": "^8.0.1",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.5",
-    "@types/react": "^18.2.14",
+    "@types/react": "19.0.10",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.45.0",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "15.1.7",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.0",
@@ -77,5 +77,8 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "overrides": {
+    "@types/react": "19.0.10"
+  }
 }

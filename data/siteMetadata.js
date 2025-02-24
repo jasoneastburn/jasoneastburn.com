@@ -14,13 +14,18 @@ const siteMetadata = {
   mastodon: '',
   email: 'jasoneastburn@gmail.com',
   github: 'https://github.com/jasoneastburn',
-  twitter: 'https://x.com/jasoneastburn',
+  x: 'https://x.com/jasoneastburn',
+  // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com/jasoneastburn',
   youtube: 'https://youtube.com/channel/UCK9bWbp8I-exu4cD4qFTs8A',
   linkedin: 'https://www.linkedin.com/in/jasoneastburn',
   threads: 'https://www.threads.net/jasoneastburn',
   instagram: 'https://www.instagram.com/jasoneastburn',
+  medium: '',
+  bluesky: 'https://bsky.app/profile/jasoneastburn.bsky.social',
   locale: 'en-US',
+  // set to true if you want a navbar fixed to the top
+  stickyNav: false,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
@@ -34,6 +39,8 @@ const siteMetadata = {
     //},
     // plausibleAnalytics: {
     //   plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
+    // If you are hosting your own Plausible.
+    //   src: '', // e.g. https://plausible.my-domain.com/js/script.js
     // },
     // simpleAnalytics: {},
     // posthogAnalytics: {
@@ -44,7 +51,7 @@ const siteMetadata = {
     },
   },
   newsletter: {
-    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
+    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus, beehive
     // Please add your .env file and modify it according to your selection
     provider: 'buttondown',
   },

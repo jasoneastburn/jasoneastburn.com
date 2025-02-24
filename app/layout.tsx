@@ -1,5 +1,6 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
+import 'remark-github-blockquote-alert/alert.css'
 
 import { Roboto } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
@@ -21,14 +22,11 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
-
   title: {
     default: siteMetadata.title,
     template: `%s | ${siteMetadata.title}`,
   },
-
   description: siteMetadata.description,
-
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
@@ -38,14 +36,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-
   alternates: {
     canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
   },
-
   robots: {
     index: true,
     follow: true,
@@ -57,41 +53,54 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
   twitter: {
     title: siteMetadata.title,
     card: 'summary_large_image',
     images: [siteMetadata.socialBanner],
-  }
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const basePath = process.env.BASE_PATH || ''
+
   return (
     <html
       lang={siteMetadata.language}
       className={`${roboto.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
-      <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+      <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href={`${basePath}/favicons/apple-touch-icon.png`}
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href={`${basePath}/favicons/favicon-32x32.png`}
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href={`${basePath}/favicons/favicon-16x16.png`}
+      />
+      <link rel="manifest" href={`${basePath}/favicons/site.webmanifest`} />
+      <link rel="mask-icon" href={`${basePath}/favicons/safari-pinned-tab.svg`} color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+      <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
+      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <Header />
+              <main className="mb-auto">{children}</main>
+            </SearchProvider>
+            <Footer />
           </SectionContainer>
         </ThemeProviders>
       </body>

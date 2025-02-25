@@ -11,7 +11,7 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   }
 
   if (isAnchorLink) {
-    return <a className="break-words" href={href} {...rest} aria-label={`Link for ${href}`} />
+    return <a className="break-words" href={href} {...rest} aria-label={`Link for ${rest.title}`} />
   }
 
   return (
@@ -21,7 +21,7 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
       rel="noopener noreferrer"
       href={href}
       {...rest}
-      aria-label={`Link for ${href}`}
+      aria-label={`Link for ${rest.title}`}
     />
   )
 }

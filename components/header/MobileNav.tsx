@@ -1,10 +1,10 @@
 'use client'
 
+import Link from '@/components/ui/Link'
+import headerNavLinks from '@/data/headerNavLinks'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { Fragment, useState, useEffect, useRef } from 'react'
-import Link from './ui/Link'
-import headerNavLinks from '@/data/headerNavLinks'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
@@ -15,7 +15,6 @@ const MobileNav = () => {
       if (status) {
         enableBodyScroll(navRef.current)
       } else {
-        // Prevent scrolling
         disableBodyScroll(navRef.current)
       }
       return !status
@@ -28,7 +27,7 @@ const MobileNav = () => {
 
   return (
     <>
-      <button aria-label="Toggle Menu" onClick={onToggleNav} className="sm:hidden">
+      <button aria-label="Toggle menu" onClick={onToggleNav} className="sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -76,7 +75,7 @@ const MobileNav = () => {
                   <Link
                     key={link.title}
                     href={link.href}
-                    className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
+                    className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline dark:text-gray-100"
                     onClick={onToggleNav}
                   >
                     {link.title}
@@ -86,7 +85,7 @@ const MobileNav = () => {
 
               <button
                 className="hover:text-primary-500 dark:hover:text-primary-400 fixed top-7 right-4 z-80 h-16 w-16 p-4 text-gray-900 dark:text-gray-100"
-                aria-label="Toggle Menu"
+                aria-label="Toggle menu"
                 onClick={onToggleNav}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

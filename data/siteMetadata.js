@@ -10,6 +10,7 @@ const siteMetadata = {
   siteUrl: 'https://www.jasoneastburn.com',
   siteRepo: 'https://github.com/jasoneastburn/jasoneastburn.com',
   siteLogo: '/assets/jasoneastburn-avatar.jpg',
+  analyticsUrl: 'https://cloud.umami.is/share/ZKZV9Tx13E8Hhy1U/www.jasoneastburn.com',
   socialBanner: '',
   mastodon: '',
   email: 'jasoneastburn@gmail.com',
@@ -26,7 +27,7 @@ const siteMetadata = {
   stickyNav: false,
   analytics: {
     umamiAnalytics: {
-      umamiWebsiteId: process.env.NEXT_PUBLIC_UMAMI_ID,
+      umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,
     },
     googleAnalytics: {
       googleAnalyticsId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,

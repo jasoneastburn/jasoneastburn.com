@@ -1,7 +1,5 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
 import {
   Menu,
   MenuButton,
@@ -11,6 +9,8 @@ import {
   RadioGroup,
   Transition,
 } from '@headlessui/react'
+import { useTheme } from 'next-themes'
+import { Fragment, useEffect, useState } from 'react'
 
 const Sun = () => (
   <svg
@@ -58,7 +58,6 @@ const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme, resolvedTheme } = useTheme()
 
-  // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
   return (

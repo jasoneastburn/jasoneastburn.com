@@ -17,6 +17,9 @@ const BuiltWith = () => (
       <Link href="https://www.markdownguide.org">
         <BrandIcon type="Markdown" className="h-5 w-5" />
       </Link>
+      <Link href="https://umami.is">
+        <BrandIcon type="Umami" className="h-5 w-5" />
+      </Link>
       <Link href={siteMetadata.siteRepo}>
         <BrandIcon type="GitHub" className="h-5 w-5" />
       </Link>

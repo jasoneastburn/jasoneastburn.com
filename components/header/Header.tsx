@@ -1,10 +1,13 @@
+'use client'
+
+import AnalyticsButton from '@/components/header/AnalyticsButton'
+import MobileNav from '@/components/header/MobileNav'
+import SearchButton from '@/components/header/SearchButton'
+import ThemeSwitch from '@/components/header/ThemeSwitch'
+import Link from '@/components/ui/Link'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Image from './Image'
-import Link from './ui/Link'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
+import Image from '../Image'
 
 const Header = () => {
   let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
@@ -48,6 +51,12 @@ const Header = () => {
               </Link>
             ))}
         </div>
+        <div
+          role="separator"
+          data-orientation="vertical"
+          className="bg-primary-500 dark:bg-primary-400 hidden h-6 w-px shrink-0 md:block"
+        />
+        <AnalyticsButton />
         <SearchButton />
         <ThemeSwitch />
         <MobileNav />

@@ -1,12 +1,19 @@
-import Link from './Link'
-import siteMetadata from '@/data/siteMetadata'
+import BuiltWith from '@/components/footer/BuiltWith'
 import SocialIcon from '@/components/social-icons'
+import Link from '@/components/ui/Link'
+import siteMetadata from '@/data/siteMetadata'
 
 export default function Footer() {
   return (
     <footer>
-      <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
+      <div className="items-center justify-between space-y-4 md:flex md:space-y-0">
+        <div className="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
+          <div>{` • `}</div>
+          <BuiltWith />
+        </div>
+
+        <div className="my-2 mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
           <SocialIcon kind="github" href={siteMetadata.github} size={6} />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
@@ -18,11 +25,6 @@ export default function Footer() {
           <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
           <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
           <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
-        </div>
-        <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.site}</Link>
         </div>
       </div>
     </footer>

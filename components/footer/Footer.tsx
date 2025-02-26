@@ -6,14 +6,14 @@ import siteMetadata from '@/data/siteMetadata'
 export default function Footer() {
   return (
     <footer>
-      <div className="mt-8 mb-8 flex flex-col items-end justify-between md:flex-row">
-        <div className="flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+      <div className="mt-8 flex flex-col items-center justify-between md:flex-row">
+        <div className="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
           <div>{` • `}</div>
           <BuiltWith />
         </div>
 
-        <div className="flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="my-2 mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
           <SocialIcon kind="github" href={siteMetadata.github} size={6} />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />

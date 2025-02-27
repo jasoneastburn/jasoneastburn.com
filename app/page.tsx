@@ -4,6 +4,7 @@ import Main from './Main'
 import { signInAnonymously } from 'lib/firebase/auth'
 import Quote from '@/components/Quote'
 import { getQuotes } from 'lib/firebase/firestore'
+import { TypedText } from '@/components/ui/TypedText'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,8 +24,8 @@ export default async function Page() {
 
   return (
     <div>
-      <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 dark:text-gray-100">
-        Welcome!
+      <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14 dark:text-gray-100">
+        <TypedText />
       </h1>
       <p className="prose dark:prose-invert max-w-none divide-y divide-gray-200 pt-8 pb-8 xl:col-span-2 dark:divide-gray-700">
         Hi, I&apos;m Jason! Welcome to my digital slice of the world. I&apos;m passionate about

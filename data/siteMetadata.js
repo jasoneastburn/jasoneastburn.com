@@ -24,7 +24,7 @@ const siteMetadata = {
   medium: '',
   bluesky: 'https://bsky.app/profile/jasoneastburn.bsky.social',
   locale: 'en-US',
-  stickyNav: false,
+  stickyNav: true,
   analytics: {
     umamiAnalytics: {
       umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,

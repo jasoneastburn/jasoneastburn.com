@@ -287,10 +287,10 @@
   background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f441.svg');
 }
 .twa-man-technologist {
-  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f468-200d-1f4bb.svg');
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f9d1-1f3fb-200d-1f4bb.svg');
 }
 .twa-man-student {
-  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f468-200d-1f393.svg');
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f9d1-1f3fb-200d-1f393.svg');
 }
 .twa-inbox-tray {
   background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4e5.svg');
@@ -372,4 +372,12 @@
 }
 .twa-bullseye {
   background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f3af.svg');
+}
+
+.twa-framed-art {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f5bc.svg');
+}
+
+.twa-phone {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4e0.svg');
 }

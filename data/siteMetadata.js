@@ -9,7 +9,7 @@ const siteMetadata = {
   site: 'jasoneastburn.com',
   siteUrl: 'https://www.jasoneastburn.com',
   siteRepo: 'https://github.com/jasoneastburn/jasoneastburn.com',
-  siteLogo: '/assets/jasoneastburn-avatar.jpg',
+  siteLogo: '/images/jasoneastburn-avatar.jpg',
   analyticsUrl: 'https://cloud.umami.is/share/ZKZV9Tx13E8Hhy1U/www.jasoneastburn.com',
   socialBanner: '',
   mastodon: '',
@@ -25,6 +25,10 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/profile/jasoneastburn.bsky.social',
   locale: 'en-US',
   stickyNav: true,
+  support: {
+    paypal: 'https://paypal.me/jasoneastburn',
+    buyMeACoffee: 'https://www.buymeacoffee.com/jasoneastburn',
+  },
   analytics: {
     umamiAnalytics: {
       umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,

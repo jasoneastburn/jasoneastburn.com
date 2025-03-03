@@ -5,4 +5,5 @@ export class Project {
   description: string
   link?: string
   image?: string
+  tech: string[]
 }

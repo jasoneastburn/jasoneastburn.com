@@ -1,4 +1,4 @@
-import Image from '@/components/Image'
+import Image from '@/components/ui/Image'
 import { genPageMetadata } from 'app/seo'
 import { getReferrals } from 'lib/firebase/firestore'
 import _ from 'lodash'

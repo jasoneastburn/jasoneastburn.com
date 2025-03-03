@@ -7,7 +7,7 @@ import ThemeSwitch from '@/components/header/ThemeSwitch'
 import Link from '@/components/ui/Link'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Image from '../Image'
+import Image from '../ui/Image'
 
 const Header = () => {
   let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
@@ -22,7 +22,7 @@ const Header = () => {
           <div className="mr-3">
             <Image
               className="rounded-full"
-              src="/assets/jasoneastburn-avatar.jpg"
+              src="/images/jasoneastburn-avatar.jpg"
               alt="Picture of the author"
               width={50}
               height={50}

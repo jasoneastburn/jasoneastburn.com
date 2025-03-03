@@ -4,15 +4,15 @@ import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Roboto } from 'next/font/google'
-import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchProvider, SearchConfig } from 'pliny/search'
+import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { SearchProvider, type SearchConfig } from 'pliny/search'
 import Header from '@/components/header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
-import { Metadata } from 'next'
-import { UmamiAnalytics } from '@/components/analytics/umami'
+import type { Metadata } from 'next'
+import { UmamiAnalytics } from '@/components/analytics/UmamiAnalytics'
 
 const roboto = Roboto({
   weight: ['400', '700'],

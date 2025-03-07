@@ -25,6 +25,8 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/profile/jasoneastburn.bsky.social',
   locale: 'en-US',
   stickyNav: true,
+  goodreadsBookshelfUrl: 'https://www.goodreads.com/review/list/188035399-jason-eastburn',
+  goodreadsFeedUrl: 'https://www.goodreads.com/review/list_rss/188035399',
   support: {
     paypal: 'https://paypal.me/jasoneastburn',
     buyMeACoffee: 'https://www.buymeacoffee.com/jasoneastburn',

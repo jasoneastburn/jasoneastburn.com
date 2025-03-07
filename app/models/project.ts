@@ -6,4 +6,5 @@ export class Project {
   links?: { url: string; label: string }[]
   image?: string
   tech: string[]
+  type: string
 }

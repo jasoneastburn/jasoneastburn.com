@@ -1,10 +1,10 @@
 import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import Main from './Main'
 import { signInAnonymously } from 'lib/firebase/auth'
-import Quote from '@/components/Quote'
+import Quote from '@/app/components/Quote'
 import { getQuotes } from 'lib/firebase/firestore'
-import { TypedText } from '@/components/ui/TypedText'
+import { TypedText } from '@/app/components/ui/TypedText'
+import { LatestPosts } from './home/LatestPosts'
 
 export const dynamic = 'force-dynamic'
 
@@ -35,7 +35,7 @@ export default async function Page() {
         at home.
       </p>
       <Quote quotes={quotes} />
-      <Main posts={posts} />
+      <LatestPosts posts={posts} />
     </div>
   )
 }

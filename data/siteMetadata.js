@@ -11,7 +11,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/jasoneastburn/jasoneastburn.com',
   siteLogo: '/images/jasoneastburn-avatar.jpg',
   analyticsUrl: 'https://cloud.umami.is/share/ZKZV9Tx13E8Hhy1U/www.jasoneastburn.com',
-  socialBanner: '',
+  socialBanner: 'images/jasoneastburn-avatar.jpg',
   mastodon: '',
   email: 'jasoneastburn@gmail.com',
   github: 'https://github.com/jasoneastburn',

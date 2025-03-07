@@ -18,10 +18,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
+      "@/app/components/*": ["app/components/*"],
       "@/data/*": ["data/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/css/*": ["css/*"],
+      "@/app/layouts/*": ["app/layouts/*"],
+      "@/app/css/*": ["app/css/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
       "pliny/*": ["node_modules/pliny/*"]
     },

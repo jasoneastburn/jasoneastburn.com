@@ -14,7 +14,7 @@ import { ThemeProviders } from './theme-providers'
 import type { Metadata } from 'next'
 import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
 
-const roboto = Roboto({
+const ROBOTO = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={SITE_METADATA.language}
-      className={`${roboto.variable} scroll-smooth`}
+      className={`${ROBOTO.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link

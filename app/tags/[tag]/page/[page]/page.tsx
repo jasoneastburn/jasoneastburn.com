@@ -1,6 +1,6 @@
 import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
-import ListLayout from 'app/layouts/ListLayoutWithTags'
+import { ListLayoutWithTags } from 'app/layouts/ListLayoutWithTags'
 import { allBlogs } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
 import { notFound } from 'next/navigation'
@@ -43,11 +43,14 @@ export default async function TagPage(props: { params: Promise<{ tag: string; pa
   }
 
   return (
-    <ListLayout
-      posts={filteredPosts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
+    <ListLayoutWithTags
       title={title}
+      description={
+        <>
+          Things I've written about <span className="font-semibold">#{tag}</span>
+        </>
+      }
+      posts={filteredPosts}
     />
   )
 }

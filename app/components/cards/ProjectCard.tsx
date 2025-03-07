@@ -1,13 +1,13 @@
 import { Fragment, type Key } from 'react'
-import { Image } from './ui/Image'
-import { BrandIcon } from './ui/BrandIcon'
-import Link from './ui/Link'
+import { Image } from '@/app/components/ui/Image'
+import { BrandIcon } from '@/app/components/ui/BrandIcon'
+import Link from '@/app/components/ui/Link'
 import type { BrandsMap } from '@/app/components/ui/BrandIcon'
 import clsx from 'clsx'
-import { GradientBorder } from './ui/GradientBorder'
-import { TiltedGridBackground } from './ui/TiltedGridBackground'
+import { GradientBorder } from '@/app/components/ui/GradientBorder'
+import { TiltedGridBackground } from '@/app/components/ui/TiltedGridBackground'
 
-const Card = ({ title, description, imgSrc, links, tech }) => (
+const ProjectCard = ({ title, description, imgSrc, links, tech }) => (
   <GradientBorder className="flex flex-col rounded-[40px] [box-shadow:0_8px_32px_rgba(194,194,218,.3)] dark:bg-white/5 dark:shadow-none">
     <TiltedGridBackground className="inset-0 z-[-1]" />
     {imgSrc &&
@@ -79,4 +79,4 @@ const Card = ({ title, description, imgSrc, links, tech }) => (
   </GradientBorder>
 )
 
-export default Card
+export default ProjectCard

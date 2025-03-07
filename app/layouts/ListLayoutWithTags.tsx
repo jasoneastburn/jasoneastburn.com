@@ -28,11 +28,9 @@ export function ListLayoutWithTags({ title, description, posts }: ListLayoutProp
         description={description}
         className="border-b border-gray-200 dark:border-gray-700"
       />
-      <div className="flex gap-x-12">
+      <div className="flex flex-col-reverse gap-x-12 md:flex-row">
         <TagsList />
         <div className="flex-grow py-5 md:py-10">
-          {' '}
-          {/* Added flex-grow here */}
           <ul className="grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2">
             {posts.map((post) => (
               <li key={post.path}>
@@ -53,8 +51,8 @@ function TagsList() {
   const pathname = usePathname()
 
   return (
-    <div className="mt-10 flex sm:space-x-24">
-      <div className="mr-0 hidden max-w-[280px] min-w-[280px] flex-wrap rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
+    <div className="mt-0 md:mt-10">
+      <div className="mx-auto max-w-[280px] min-w-[280px] rounded-sm bg-gray-50 pt-5 pb-3 shadow-md md:mx-0 dark:bg-gray-900/70 dark:shadow-gray-800/40">
         <div className="px-6">
           {pathname.startsWith('/blog') ? (
             <h3 className="text-primary-500 font-bold uppercase">All Posts</h3>

@@ -35,11 +35,11 @@ export default async function Page() {
           description="Use my link or code and we each get a little sumthin' sumthin'..."
           className="border-b border-gray-200 dark:border-gray-700"
         />
-        <div className="mt-10">
+        <div className="mt-5">
           {referrals.map((categoryGroup) => (
             <div key={categoryGroup.category} className="mb-8">
-              <h2 className="mb-12 text-2xl font-semibold">{categoryGroup.category}</h2>
-              <div className="grid-cols-2 space-y-10 gap-x-6 gap-y-10 md:grid md:space-y-0">
+              <h2 className="mb-16 text-2xl font-semibold">{categoryGroup.category}</h2>
+              <div className="grid-cols-2 space-y-10 gap-x-6 gap-y-15 md:grid md:space-y-0">
                 {categoryGroup.items.map((referral) => (
                   <ReferralCard
                     key={referral.id}

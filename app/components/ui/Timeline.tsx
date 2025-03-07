@@ -83,7 +83,7 @@ function TimelineItem({ exp, last }: { exp: CareerTimeline; last: boolean }) {
             </div>
           </div>
         </summary>
-        <ul style={{ listStyleType: 'disc' }}>
+        <ul style={{ listStyleType: 'disc' }} className="mt-5">
           {details.map((detail, idx) => (
             <li key={idx}>{detail}</li>
           ))}

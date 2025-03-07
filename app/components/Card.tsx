@@ -16,7 +16,7 @@ const Card = ({ title, description, imgSrc, links, tech }) => (
           <Image
             alt={title}
             src={imgSrc}
-            className="rounded-[40px] object-cover object-center md:h-36 lg:h-48"
+            className="h-48 rounded-[40px] object-cover object-center md:h-36 lg:h-75" // Adjusted height for mobile
             width={544}
             height={306}
           />

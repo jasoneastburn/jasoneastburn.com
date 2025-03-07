@@ -22,11 +22,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="mr-3">
             <Image
-              className="rounded-full md:h-15 lg:h-15"
+              className="h-10 w-10 rounded-full"
               src="/images/jasoneastburn-avatar.jpg"
               alt="Picture of the author"
-              width={50}
-              height={50}
+              width={100}
+              height={100}
             />
           </div>
           {typeof siteMetadata.headerTitle === 'string' ? (

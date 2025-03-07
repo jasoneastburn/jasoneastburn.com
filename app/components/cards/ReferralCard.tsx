@@ -21,14 +21,14 @@ export function ReferralCard({ description, image, link, name }) {
           'hover:shadow-zinc-900/5 dark:hover:shadow-black/15',
         ])}
       >
-        <Image
-          alt={title}
-          src={image}
-          className="absolute -top-5 left-4 z-10 text-gray-900 dark:text-white"
-          width={75}
-          height={25}
-        />
-        <div className="relative w-full px-4 pt-6 pb-6">
+        <div className="relative w-full px-4 pt-10 pb-6">
+          <Image
+            alt={title}
+            src={image}
+            className="absolute -top-10 z-10 text-gray-900 dark:text-white"
+            width={125}
+            height={25}
+          />
           <h3 className="mt-4 text-xl leading-7 font-semibold">{name}</h3>
           <p className="mt-1.5 line-clamp-5 text-zinc-600 dark:text-zinc-400">{description}</p>
         </div>

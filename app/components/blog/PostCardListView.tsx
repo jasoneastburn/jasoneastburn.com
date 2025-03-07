@@ -15,7 +15,7 @@ export function PostCardListView({ post, loading }) {
           href={`/blog/${slug}`}
           className={clsx([
             'relative block shrink-0',
-            'h-60 w-60 md:h-60 md:w-60',
+            'h-60 w-full md:h-60 md:w-60',
             'pt-0 pr-3 pb-3 pl-0',
             'transition-all ease-in-out hover:pt-1 hover:pr-2 hover:pb-2 hover:pl-1',
           ])}
@@ -25,7 +25,7 @@ export function PostCardListView({ post, loading }) {
             alt={title}
             width={60}
             height={60}
-            className="h-60 w-60 rounded-xl shadow-2xl"
+            className={clsx(['h-60 rounded-xl shadow-2xl', 'w-full md:w-60'])}
             loading={loading}
           />
         </Link>

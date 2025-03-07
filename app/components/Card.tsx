@@ -5,9 +5,11 @@ import Link from './ui/Link'
 import type { BrandsMap } from '@/app/components/ui/BrandIcon'
 import clsx from 'clsx'
 import { GradientBorder } from './ui/GradientBorder'
+import { TiltedGridBackground } from './ui/TiltedGridBackground'
 
 const Card = ({ title, description, imgSrc, links, tech }) => (
   <GradientBorder className="flex flex-col rounded-[40px] [box-shadow:0_8px_32px_rgba(194,194,218,.3)] dark:bg-white/5 dark:shadow-none">
+    <TiltedGridBackground className="inset-0 z-[-1]" />
     {imgSrc &&
       (links[0] ? (
         <Link href={links[0].url} aria-label={`Link to ${title}`}>

@@ -27,7 +27,7 @@ function TimelineItem({ exp, last }: { exp: CareerTimeline; last: boolean }) {
     <div
       className={clsx(
         'group/timeline-item',
-        'relative -mx-3 flex flex-row items-start gap-3 rounded-lg p-3',
+        'not-prose relative -mx-3 mb-5 flex flex-row items-start gap-3 rounded-lg p-3',
         'cursor-pointer bg-transparent transition-colors hover:bg-slate-100 dark:hover:bg-slate-800',
         !last && [
           'before:absolute before:top-15 before:left-9',

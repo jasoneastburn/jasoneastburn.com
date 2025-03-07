@@ -28,6 +28,7 @@ import Railway from 'public/icons/railway.svg'
 import React from 'public/icons/react.svg'
 import Remix from 'public/icons/remix.svg'
 import RottenTomatoes from 'public/icons/rottentomatoes.svg'
+import RSS from 'public/icons/rss.svg'
 import SemanticUI from 'public/icons/semanticui.svg'
 import Shopify from 'public/icons/shopify.svg'
 import Spotify from 'public/icons/spotify.svg'
@@ -246,6 +247,10 @@ export const BrandsMap: Record<
   Pnpm: {
     Icon: Pnpm,
     url: 'https://pnpm.io/',
+  },
+  RSS: {
+    Icon: RSS,
+    url: 'https://www.jasoneastburn.com/feed.xml',
   },
 }
 

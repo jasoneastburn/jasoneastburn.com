@@ -7,9 +7,9 @@ export default function Footer() {
   return (
     <footer>
       <div className="mt-8 flex flex-col items-center justify-between md:flex-row">
-        <div className="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
-          <div>{` • `}</div>
+        <div className="mb-4 flex space-x-2 text-sm">
+          <div className="text-gray-500 dark:text-gray-400">{`© ${new Date().getFullYear()} ${siteMetadata.author}`}</div>
+          <div className="text-gray-500 dark:text-gray-400">{` • `}</div>
           <BuiltWith />
         </div>
 

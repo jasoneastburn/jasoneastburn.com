@@ -12,6 +12,7 @@ const BuiltWith = () => (
       <BrandIcon name="Markdown" iconClassName={clsx('h-5 w-5')} />
       <BrandIcon name="Umami" iconClassName={clsx('h-5 w-5')} />
       <BrandIcon name="GitHub" iconClassName={clsx('h-5 w-5')} />
+      <BrandIcon name="RSS" iconClassName={clsx('h-5 w-5')} />
     </div>
   </div>
 )

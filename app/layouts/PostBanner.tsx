@@ -7,7 +7,7 @@ import Comments from '@/app/components/Comments'
 import Link from '@/app/components/ui/Link'
 import PageTitle from '@/app/components/PageTitle'
 import SectionContainer from '@/app/components/SectionContainer'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import ScrollTopAndComment from '@/app/components/ScrollTopAndComment'
 
 interface LayoutProps {
@@ -40,7 +40,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             </div>
           </div>
           <div className="prose dark:prose-invert max-w-none py-4">{children}</div>
-          {siteMetadata.comments && (
+          {SITE_METADATA.comments && (
             <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
               <Comments slug={slug} />
             </div>

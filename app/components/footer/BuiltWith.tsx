@@ -1,5 +1,5 @@
 import Link from '@/app/components/ui/Link'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { BrandIcon } from '../ui/BrandIcon'
 import clsx from 'clsx'
 

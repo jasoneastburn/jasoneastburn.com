@@ -11,7 +11,7 @@ import PostSimple from 'app/layouts/PostSimple'
 import PostLayout from 'app/layouts/PostLayout'
 import PostBanner from 'app/layouts/PostBanner'
 import type { Metadata } from 'next'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { notFound } from 'next/navigation'
 
 const defaultLayout = 'PostLayout'
@@ -39,13 +39,13 @@ export async function generateMetadata(props: {
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
-  let imageList = [siteMetadata.socialBanner]
+  let imageList = [SITE_METADATA.socialBanner]
   if (post.images) {
     imageList = typeof post.images === 'string' ? [post.images] : post.images
   }
   const ogImages = imageList.map((img) => {
     return {
-      url: img.includes('http') ? img : siteMetadata.siteUrl + img,
+      url: img.includes('http') ? img : SITE_METADATA.siteUrl + img,
     }
   })
 
@@ -55,14 +55,14 @@ export async function generateMetadata(props: {
     openGraph: {
       title: post.title,
       description: post.summary,
-      siteName: siteMetadata.title,
+      siteName: SITE_METADATA.title,
       locale: 'en_US',
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
       url: './',
       images: ogImages,
-      authors: authors.length > 0 ? authors : [siteMetadata.author],
+      authors: authors.length > 0 ? authors : [SITE_METADATA.author],
     },
     twitter: {
       card: 'summary_large_image',

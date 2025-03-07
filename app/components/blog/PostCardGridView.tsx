@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
 import Link from '@/app/components/ui/Link'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { CoreContent } from 'pliny/utils/contentlayer'
 import { formatDate } from 'pliny/utils/formatDate'
 import Tag from '@/app/components/Tag'
@@ -22,7 +22,7 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
           ])}
         >
           <Image
-            src={images && images.length > 0 ? images[0] : siteMetadata.socialBanner}
+            src={images && images.length > 0 ? images[0] : SITE_METADATA.socialBanner}
             alt={title}
             width={600}
             height={400}

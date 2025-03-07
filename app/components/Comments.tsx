@@ -2,18 +2,18 @@
 
 import { Comments as CommentsComponent } from 'pliny/comments'
 import { useState } from 'react'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 
 export default function Comments({ slug }: { slug: string }) {
   const [loadComments, setLoadComments] = useState(true)
 
-  if (!siteMetadata.comments?.provider) {
+  if (!SITE_METADATA.comments?.provider) {
     return null
   }
   return (
     <>
       {loadComments ? (
-        <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+        <CommentsComponent commentsConfig={SITE_METADATA.comments} slug={slug} />
       ) : (
         <button onClick={() => setLoadComments(true)}>Load Comments</button>
       )}

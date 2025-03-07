@@ -3,7 +3,7 @@ import { Image } from '@/app/components/ui/Image'
 import { PageHeader } from '@/app/components/ui/PageHeader'
 import { Timeline } from '@/app/components/ui/Timeline'
 import { Twemoji } from '@/app/components/ui/Twemoji'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { CareerTimeline } from 'app/models/career-timeline'
 import { genPageMetadata } from 'app/seo'
 import { type Authors, allAuthors } from 'contentlayer/generated'
@@ -47,7 +47,7 @@ export default async function Page() {
             <div className="text-center text-gray-500 dark:text-gray-400">{author.occupation}</div>
             <div className="text-center text-gray-500 dark:text-gray-400">{author.company}</div>
             <a
-              href={siteMetadata.support.buyMeACoffee}
+              href={SITE_METADATA.support.buyMeACoffee}
               target="_blank"
               className="mt-3 [&_.image-container]:mx-0"
             >
@@ -61,7 +61,7 @@ export default async function Page() {
               />
             </a>
             <a
-              href={siteMetadata.support.paypal}
+              href={SITE_METADATA.support.paypal}
               target="_blank"
               className="flex h-15 w-[214px] items-center justify-center rounded-lg bg-[#FFFFFF] p-1"
             >

@@ -7,12 +7,12 @@ import PageTitle from '@/app/components/PageTitle'
 import SectionContainer from '@/app/components/SectionContainer'
 import { Image } from '@/app/components/ui/Image'
 import Tag from '@/app/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import ScrollTopAndComment from '@/app/components/ScrollTopAndComment'
 
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
+const editUrl = (path) => `${SITE_METADATA.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
-  `https://mobile.x.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
+  `https://mobile.x.com/search?q=${encodeURIComponent(`${SITE_METADATA.siteUrl}/${path}`)}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -48,7 +48,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      {new Date(date).toLocaleDateString(SITE_METADATA.locale, postDateTemplate)}
                     </time>
                   </dd>
                 </div>
@@ -100,7 +100,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
               </div>
-              {siteMetadata.comments && (
+              {SITE_METADATA.comments && (
                 <div
                   className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300"
                   id="comment"

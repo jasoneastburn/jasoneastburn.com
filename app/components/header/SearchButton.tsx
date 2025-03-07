@@ -1,14 +1,14 @@
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { AlgoliaButton } from 'pliny/search/AlgoliaButton'
 import { KBarButton } from 'pliny/search/KBarButton'
 
 const SearchButton = () => {
   if (
-    siteMetadata.search &&
-    (siteMetadata.search.provider === 'algolia' || siteMetadata.search.provider === 'kbar')
+    SITE_METADATA.search &&
+    (SITE_METADATA.search.provider === 'algolia' || SITE_METADATA.search.provider === 'kbar')
   ) {
     const SearchButtonWrapper =
-      siteMetadata.search.provider === 'algolia' ? AlgoliaButton : KBarButton
+      SITE_METADATA.search.provider === 'algolia' ? AlgoliaButton : KBarButton
 
     return (
       <SearchButtonWrapper aria-label="Search">

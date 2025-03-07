@@ -3,7 +3,7 @@ import type { BrandsMap } from '@/app/components/ui/BrandIcon'
 import { BrandIcon } from '@/app/components/ui/BrandIcon'
 import { GradientBorder } from '@/app/components/ui/GradientBorder'
 import Link from '@/app/components/ui/Link'
-import { title } from '@/data/siteMetadata'
+import { title } from '@/data/SITE_METADATA'
 import Image from 'next/image'
 import { TiltedGridBackground } from '../ui/TiltedGridBackground'
 

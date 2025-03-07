@@ -6,7 +6,7 @@ import Comments from '@/app/components/Comments'
 import Link from '@/app/components/ui/Link'
 import PageTitle from '@/app/components/PageTitle'
 import SectionContainer from '@/app/components/SectionContainer'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import ScrollTopAndComment from '@/app/components/ScrollTopAndComment'
 
 interface LayoutProps {
@@ -33,7 +33,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                    <time dateTime={date}>{formatDate(date, SITE_METADATA.locale)}</time>
                   </dd>
                 </div>
               </dl>
@@ -43,7 +43,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
             </div>
-            {siteMetadata.comments && (
+            {SITE_METADATA.comments && (
               <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
                 <Comments slug={slug} />
               </div>

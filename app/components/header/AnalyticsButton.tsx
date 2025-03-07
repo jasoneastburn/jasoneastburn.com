@@ -1,4 +1,4 @@
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 
 const AnalyticsButton = () => {
   return (
@@ -7,7 +7,7 @@ const AnalyticsButton = () => {
       type="button"
       className="hover:text-primary-500 dark:hover:text-primary-400"
       data-umami-event="view-analytics"
-      onClick={() => window.open(siteMetadata.analyticsUrl, '_blank')}
+      onClick={() => window.open(SITE_METADATA.analyticsUrl, '_blank')}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@ import { allBlogs } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import tagData from 'app/tag-data.json'
 import { ListLayoutWithTags } from '../../layouts/ListLayoutWithTags'
 import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
@@ -15,11 +15,11 @@ export async function generateMetadata(props: {
   const tag = decodeURI(params.tag)
   return genPageMetadata({
     title: tag,
-    description: `${siteMetadata.title} ${tag} tagged content`,
+    description: `${SITE_METADATA.title} ${tag} tagged content`,
     alternates: {
       canonical: './',
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/tags/${tag}/feed.xml`,
+        'application/rss+xml': `${SITE_METADATA.siteUrl}/tags/${tag}/feed.xml`,
       },
     },
   })

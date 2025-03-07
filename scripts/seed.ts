@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs'
 import Parser from 'rss-parser'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { Books } from 'app/models/books'
 
 const parser = new Parser<{ [key: string]: unknown }, Books>({
@@ -32,9 +32,9 @@ const parser = new Parser<{ [key: string]: unknown }, Books>({
 })
 
 export async function fetchGoodreadsBooks() {
-  if (siteMetadata.goodreadsFeedUrl) {
+  if (SITE_METADATA.goodreadsFeedUrl) {
     try {
-      const data = await parser.parseURL(siteMetadata.goodreadsFeedUrl)
+      const data = await parser.parseURL(SITE_METADATA.goodreadsFeedUrl)
       for (const book of data.items) {
         book.book_description = book.book_description
           .replace(/<[^>]*(>|$)/g, '')

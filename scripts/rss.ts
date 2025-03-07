@@ -3,7 +3,7 @@ import { mkdirSync, writeFileSync } from 'fs'
 import { slug } from 'github-slugger'
 import path from 'path'
 import { allBlogs } from './../.contentlayer/generated/index.mjs'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import tagData from 'app/tag-data.json'
 import { escape } from '../app/utils/html-escaper'
 import { sortPosts } from 'pliny/utils/contentlayer'
@@ -12,7 +12,7 @@ const blogs = allBlogs as unknown as Blog[]
 const RSS_PAGE = 'feed.xml'
 
 function generateRssItem(item: Blog) {
-  const { siteUrl, email, author } = siteMetadata
+  const { siteUrl, email, author } = SITE_METADATA
   return `
 		<item>
 			<guid>${siteUrl}/blog/${item.slug}</guid>
@@ -27,7 +27,7 @@ function generateRssItem(item: Blog) {
 }
 
 function generateRss(items: Blog[], page = RSS_PAGE) {
-  const { title, siteUrl, description, language, email, author } = siteMetadata
+  const { title, siteUrl, description, language, email, author } = SITE_METADATA
   return `
 		<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 			<channel>

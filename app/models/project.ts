@@ -3,7 +3,7 @@ export class Project {
   active: boolean
   title: string
   description: string
-  link?: string
+  links?: { url: string; label: string }[]
   image?: string
   tech: string[]
 }

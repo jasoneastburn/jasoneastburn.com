@@ -1,18 +1,18 @@
-import 'css/tailwind.css'
-import 'css/twemoji.css'
+import 'app/css/tailwind.css'
+import 'app/css/twemoji.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Roboto } from 'next/font/google'
 import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, type SearchConfig } from 'pliny/search'
-import Header from '@/components/header'
-import SectionContainer from '@/components/SectionContainer'
-import Footer from '@/components/footer'
+import Header from '@/app/components/header'
+import SectionContainer from '@/app/components/SectionContainer'
+import Footer from '@/app/components/footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import type { Metadata } from 'next'
-import { UmamiAnalytics } from '@/components/analytics/UmamiAnalytics'
+import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
 
 const roboto = Roboto({
   weight: ['400', '700'],

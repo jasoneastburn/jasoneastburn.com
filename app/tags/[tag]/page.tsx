@@ -6,7 +6,8 @@ import { notFound } from 'next/navigation'
 import { SITE_METADATA } from '@/data/site-metadata'
 import tagData from 'app/tag-data.json'
 import { ListLayoutWithTags } from '../../layouts/ListLayoutWithTags'
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
+import { allCoreContent } from '../../utils/content-layer'
+import { sortPosts } from '../../utils/misc'
 
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>

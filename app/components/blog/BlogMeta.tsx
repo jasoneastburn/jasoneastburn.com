@@ -2,7 +2,7 @@ import type readingTime from 'reading-time'
 import type { StatsType } from '../../../database/schema'
 import { getTimeAgo } from '../../utils/misc'
 import { ViewsCounter } from '@/app/components/blog/ViewsCounter'
-import { formatDate } from 'pliny/utils/formatDate'
+import { formatDate } from '../../utils/misc'
 
 type BlogMetaProps = {
   date: string

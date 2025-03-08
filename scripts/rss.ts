@@ -6,7 +6,7 @@ import { allBlogs } from './../.contentlayer/generated/index.mjs'
 import { SITE_METADATA } from '@/data/site-metadata'
 import tagData from 'app/tag-data.json'
 import { escape } from '../app/utils/html-escaper'
-import { sortPosts } from 'pliny/utils/contentlayer'
+import { sortPosts } from '../app/utils/misc'
 
 const blogs = allBlogs as unknown as Blog[]
 const RSS_PAGE = 'feed.xml'

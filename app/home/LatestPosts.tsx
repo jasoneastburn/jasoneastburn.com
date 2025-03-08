@@ -5,7 +5,7 @@ import { PostCardListView } from '@/app/components/blog/PostCardListView'
 import { PageHeader } from '@/app/components/ui/PageHeader'
 
 export function LatestPosts({ posts }) {
-  const [view, setView] = useState<'posts' | 'snippets'>('posts')
+  const [view, setView] = useState<'posts'>('posts')
   return (
     <div className="space-y-4 divide-y divide-gray-200 md:space-y-8 dark:divide-gray-700">
       <PageHeader

@@ -3,8 +3,8 @@ import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import { SITE_METADATA } from '@/data/site-metadata'
-import type { CoreContent } from 'pliny/utils/contentlayer'
-import { formatDate } from 'pliny/utils/formatDate'
+import type { CoreContent } from '../../models/mdx'
+import { formatDate } from '../../utils/misc'
 import Tag from '@/app/components/ui/Tag'
 
 export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {

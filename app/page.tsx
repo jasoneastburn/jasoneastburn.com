@@ -1,10 +1,11 @@
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { signInAnonymously } from 'lib/firebase/auth'
 import Quote from '@/app/components/ui/Quote'
 import { getQuotes } from 'lib/firebase/firestore'
 import { TypedText } from '@/app/components/ui/TypedText'
 import { LatestPosts } from './home/LatestPosts'
+import { allCoreContent } from './utils/content-layer'
+import { sortPosts } from './utils/misc'
 
 export const dynamic = 'force-dynamic'
 

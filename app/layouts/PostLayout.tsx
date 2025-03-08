@@ -13,7 +13,7 @@ import { TableOfContents } from '@/app/components/blog/TableOfContents'
 import { GradientDivider } from '@/app/components/ui/GradientDivider'
 import { SITE_METADATA } from '@/data/site-metadata'
 import type { StatsType } from '../../database/schema'
-import type { CoreContent } from 'pliny/utils/contentlayer'
+import type { CoreContent } from '../models/mdx'
 import Tag from '@/app/components/ui/Tag'
 
 interface LayoutProps {

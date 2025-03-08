@@ -1,7 +1,9 @@
+import type { MDXDocumentDate } from 'app/models/mdx'
+
 export function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: '2-digit',
   })
 }
@@ -67,6 +69,10 @@ export function getTimeAgo(time: string | number | Date, now = Date.now()): stri
   const v = Math.floor(amt)
 
   return `${v === 1 ? (amt === hours ? 'an' : 'a') : v} ${cycle}${v > 1 ? 's' : ''} ago`
+}
+
+export function sortPosts<T extends MDXDocumentDate>(allBlogs: T[], dateKey: string = 'date'): T[] {
+  return allBlogs.sort((a, b) => dateSortDesc(a[dateKey], b[dateKey]))
 }
 
 function dateSortDesc(a: string, b: string) {

@@ -8,7 +8,7 @@ import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
 //import { SearchArticles } from '~/components/blog/search-articles'
 import { Link } from '@/app/components/ui/Link'
 import { PageHeader } from '@/app/components/ui/PageHeader'
-import type { CoreContent } from 'pliny/utils/contentlayer'
+import type { CoreContent } from '../models/mdx'
 import { SearchPosts } from '../components/blog/SearchPosts'
 
 interface PaginationProps {

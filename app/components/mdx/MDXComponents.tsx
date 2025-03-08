@@ -8,7 +8,11 @@ import { TableWrapper } from '@/app/components/mdx/TableWrapper'
 
 export const MDX_COMPONENTS: MDXComponents = {
   Image: ({ alt, ...rest }: ImageProps) => {
-    return <Image alt={alt} {...rest} />
+    return (
+      <Zoom>
+        <Image alt={alt} {...rest} />
+      </Zoom>
+    )
   },
   Twemoji,
   CodeTitle,

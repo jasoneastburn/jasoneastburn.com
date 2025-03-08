@@ -4,7 +4,7 @@ import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import { SITE_METADATA } from '@/data/site-metadata'
 import Tag from '@/app/components/ui/Tag'
-import { formatDate } from 'pliny/utils/formatDate'
+import { formatDate } from '../../utils/misc'
 
 export function PostCardListView({ post, loading }) {
   const { slug, date, title, summary, tags, images, readingTime } = post
@@ -35,7 +35,7 @@ export function PostCardListView({ post, loading }) {
               <dl className="text-sm">
                 <dt className="sr-only">Published on</dt>
                 <dd className="leading-6 font-medium text-gray-500 dark:text-gray-400">
-                  <time dateTime={date}>{formatDate(date, SITE_METADATA.locale)}</time>
+                  <time dateTime={date}>{formatDate(date)}</time>
                   <span className="mx-2 text-gray-400">/</span>
                   <span>{Math.ceil(readingTime.minutes)} mins read</span>
                 </dd>

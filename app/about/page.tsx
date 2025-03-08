@@ -8,7 +8,7 @@ import type { CareerTimeline } from 'app/models/career-timeline'
 import { genPageMetadata } from 'app/seo'
 import { type Author, allAuthors } from 'contentlayer/generated'
 import { getCareerTimeline } from 'lib/firebase/firestore'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import { MDXLayoutRenderer } from '@/app/components/mdx/LayoutRenderer'
 
 export const metadata = genPageMetadata({
   title: 'About',

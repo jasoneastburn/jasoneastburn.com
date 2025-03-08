@@ -10,7 +10,7 @@ import { PostBanner } from '@/app/layouts/PostBanner'
 import { PostLayout } from '@/app/layouts/PostLayout'
 import { PostSimple } from '@/app/layouts/PostSimple'
 import { allCoreContent, coreContent } from '../../utils/content-layer'
-import { sortPosts } from 'pliny/utils/contentlayer'
+import { sortPosts } from '../../utils/misc'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 const LAYOUTS = {

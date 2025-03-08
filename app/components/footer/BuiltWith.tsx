@@ -1,5 +1,5 @@
-import Link from '@/app/components/ui/Link'
-import siteMetadata from '@/data/siteMetadata'
+import { Link } from '@/app/components/ui/Link'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { BrandIcon } from '../ui/BrandIcon'
 import clsx from 'clsx'
 
@@ -11,6 +11,7 @@ const BuiltWith = () => (
       <BrandIcon name="Typescript" iconClassName={clsx('h-5 w-5')} />
       <BrandIcon name="Markdown" iconClassName={clsx('h-5 w-5')} />
       <BrandIcon name="Umami" iconClassName={clsx('h-5 w-5')} />
+      <BrandIcon name="RSS" iconClassName={clsx('h-5 w-5')} />
       <BrandIcon name="GitHub" iconClassName={clsx('h-5 w-5')} />
     </div>
   </div>

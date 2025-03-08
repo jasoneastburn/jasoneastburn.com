@@ -4,21 +4,21 @@ import AnalyticsButton from '@/app/components/header/AnalyticsButton'
 import MobileNav from '@/app/components/header/MobileNav'
 import SearchButton from '@/app/components/header/SearchButton'
 import ThemeSwitch from '@/app/components/header/ThemeSwitch'
-import Link from '@/app/components/ui/Link'
-import siteMetadata from '@/data/siteMetadata'
+import { Link } from '@/app/components/ui/Link'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { HEADER_NAV_LINKS } from '@/data/navigation-links'
 import { Image } from '../ui/Image'
 import { MoreLinks } from './MoreLinks'
 
 const Header = () => {
   let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
-  if (siteMetadata.stickyNav) {
+  if (SITE_METADATA.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
 
   return (
     <header className={headerClass}>
-      <Link href="/" aria-label={siteMetadata.headerTitle}>
+      <Link href="/" aria-label={SITE_METADATA.headerTitle}>
         <div className="flex items-center justify-between">
           <div className="mr-3">
             <Image
@@ -29,12 +29,12 @@ const Header = () => {
               height={100}
             />
           </div>
-          {typeof siteMetadata.headerTitle === 'string' ? (
+          {typeof SITE_METADATA.headerTitle === 'string' ? (
             <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
+              {SITE_METADATA.headerTitle}
             </div>
           ) : (
-            siteMetadata.headerTitle
+            SITE_METADATA.headerTitle
           )}
         </div>
       </Link>

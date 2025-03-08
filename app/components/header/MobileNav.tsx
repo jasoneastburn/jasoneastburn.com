@@ -1,6 +1,6 @@
 'use client'
 
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { HEADER_NAV_LINKS, MORE_NAV_LINKS } from '@/data/navigation-links'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'

@@ -1,5 +1,5 @@
 import { GradientBorder } from '@/app/components/ui/GradientBorder'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { Rating } from '@/app/components/ui/Rating'
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import GoodreadsLogo from '../../../public/images/books/goodreads.svg'

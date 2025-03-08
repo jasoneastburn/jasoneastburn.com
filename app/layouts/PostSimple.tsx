@@ -1,82 +1,68 @@
-import type { ReactNode } from 'react'
-import { formatDate } from 'pliny/utils/formatDate'
-import type { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import Comments from '@/app/components/Comments'
-import Link from '@/app/components/ui/Link'
-import PageTitle from '@/app/components/PageTitle'
-import SectionContainer from '@/app/components/SectionContainer'
-import siteMetadata from '@/data/siteMetadata'
-import ScrollTopAndComment from '@/app/components/ScrollTopAndComment'
+import type { ReactNode } from 'react'
+import { BlogMeta } from '@/app/components/blog/BlogMeta'
+import { Comments } from '@/app/components/blog/Comments'
+import { DiscussOnX } from '@/app/components/blog/DiscussOnX'
+import { EditOnGithub } from '@/app/components/blog/EditOnGithub'
+import { PostTitle } from '@/app/components/blog/PostTitle'
+import { ScrollButtons } from '@/app/components/blog/ScrollButtons'
+import { SocialShare } from '@/app/components/blog/SocialShare'
+import { GradientDivider } from '@/app/components/ui/GradientDivider'
+import { SITE_METADATA } from '@/data/site-metadata'
+import type { StatsType } from '../../database/schema'
+import type { CoreContent } from '../models/mdx'
+import Tag from '@/app/components/ui/Tag'
 
-interface LayoutProps {
+interface PostSimpleProps {
   content: CoreContent<Blog>
   children: ReactNode
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
 }
 
-export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title } = content
+export function PostSimple({ content, children }: PostSimpleProps) {
+  const { slug, date, lastmod, title, type, tags, readingTime, filePath } = content
+  const postUrl = `${SITE_METADATA.siteUrl}/${type.toLowerCase()}/${slug}`
 
   return (
-    <SectionContainer>
-      <ScrollTopAndComment />
-      <article>
-        <div>
-          <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
-              <div>
-                <PageTitle>{title}</PageTitle>
-              </div>
-              <dl>
-                <div>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0 dark:divide-gray-700">
-            <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
-            </div>
-            {siteMetadata.comments && (
-              <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
-                <Comments slug={slug} />
-              </div>
-            )}
-            <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && prev.path && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/${prev.path}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                      aria-label={`Previous post: ${prev.title}`}
-                    >
-                      &larr; {prev.title}
-                    </Link>
-                  </div>
-                )}
-                {next && next.path && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/${next.path}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                      aria-label={`Next post: ${next.title}`}
-                    >
-                      {next.title} &rarr;
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </footer>
+    <div>
+      <ScrollButtons />
+      <article className="space-y-6 pt-6 lg:space-y-12">
+        <div className="space-y-4">
+          <PostTitle>{title}</PostTitle>
+          <div className="flex flex-wrap">
+            {tags.map((tag) => (
+              <Tag key={tag} text={tag} />
+            ))}
           </div>
+          <dl>
+            <div>
+              <dt className="sr-only">Published on</dt>
+              <BlogMeta
+                date={date}
+                lastmod={lastmod}
+                type={type.toLowerCase() as StatsType}
+                slug={slug}
+                readingTime={readingTime}
+              />
+            </div>
+          </dl>
+        </div>
+        <GradientDivider />
+        <div className="prose prose-lg dark:prose-invert max-w-none">{children}</div>
+        <GradientDivider className="mt-1 mb-2" />
+        <div className="space-y-8">
+          {/* <div className="flex justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <DiscussOnX postUrl={postUrl} />
+              <span className="text-gray-500">/</span>
+              <EditOnGithub filePath={filePath} />
+            </div>
+            <SocialShare postUrl={postUrl} filePath={filePath} title={title} />
+          </div> */}
+          <Comments />
         </div>
       </article>
-    </SectionContainer>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs'
 import Parser from 'rss-parser'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { Books } from 'app/models/books'
 
 const parser = new Parser<{ [key: string]: unknown }, Books>({
@@ -32,9 +32,9 @@ const parser = new Parser<{ [key: string]: unknown }, Books>({
 })
 
 export async function fetchGoodreadsBooks() {
-  if (siteMetadata.goodreadsFeedUrl) {
+  if (SITE_METADATA.goodreadsFeedUrl) {
     try {
-      const data = await parser.parseURL(siteMetadata.goodreadsFeedUrl)
+      const data = await parser.parseURL(SITE_METADATA.goodreadsFeedUrl)
       for (const book of data.items) {
         book.book_description = book.book_description
           .replace(/<[^>]*(>|$)/g, '')
@@ -43,7 +43,7 @@ export async function fetchGoodreadsBooks() {
           .replace(/\.([a-zA-Z0-9])/g, '. $1')
         book.content = book.content.replace(/\n/g, '').replace(/\s\s+/g, ' ')
       }
-      writeFileSync(`./data/books.json`, JSON.stringify(data.items))
+      writeFileSync(`../json/books.json`, JSON.stringify(data.items))
       console.log('📚 Books seeded.')
     } catch (error) {
       console.error(`Error fetching the Goodreads RSS feed: ${error.message}`)

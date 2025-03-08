@@ -3,7 +3,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import { ChevronDown } from 'lucide-react'
 import { Fragment } from 'react'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import { MORE_NAV_LINKS } from '@/data/navigation-links'
 

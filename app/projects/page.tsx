@@ -1,8 +1,8 @@
-import Card from '@/app/components/Card'
 import { Project } from 'app/models/project'
 import { genPageMetadata } from 'app/seo'
 import { getProjects } from 'lib/firebase/firestore'
 import { PageHeader } from '@/app/components/ui/PageHeader'
+import ProjectCard from '../components/cards/ProjectCard'
 
 export const metadata = genPageMetadata({
   title: 'Projects',
@@ -25,7 +25,7 @@ export default async function Projects() {
         />
         <div className="mt-10 grid-cols-2 space-y-10 gap-x-6 gap-y-10 md:grid md:space-y-0">
           {projects.map((d) => (
-            <Card
+            <ProjectCard
               key={d.title}
               title={d.title}
               description={d.description}

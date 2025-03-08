@@ -1,20 +1,22 @@
 import 'app/css/tailwind.css'
 import 'app/css/twemoji.css'
 import 'pliny/search/algolia.css'
+import 'react-medium-image-zoom/dist/styles.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Roboto } from 'next/font/google'
-import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchProvider, type SearchConfig } from 'pliny/search'
 import Header from '@/app/components/header'
-import SectionContainer from '@/app/components/SectionContainer'
+import SectionContainer from '@/app/components/ui/SectionContainer'
 import Footer from '@/app/components/footer'
-import siteMetadata from '@/data/siteMetadata'
+import { SITE_METADATA } from '../data/site-metadata'
 import { ThemeProviders } from './theme-providers'
 import type { Metadata } from 'next'
 import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
+import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { SearchProvider, type SearchConfig } from 'pliny/search'
+// import { KBarSearchProvider } from '@/app/components/search/KBarSearchProvider'
 
-const roboto = Roboto({
+const ROBOTO = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
@@ -23,25 +25,25 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
+  metadataBase: new URL(SITE_METADATA.siteUrl),
   title: {
-    default: siteMetadata.title,
-    template: `%s | ${siteMetadata.title}`,
+    default: SITE_METADATA.title,
+    template: `%s | ${SITE_METADATA.title}`,
   },
-  description: siteMetadata.description,
+  description: SITE_METADATA.description,
   openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
+    title: SITE_METADATA.title,
+    description: SITE_METADATA.description,
     url: './',
-    siteName: siteMetadata.title,
-    images: [siteMetadata.socialBanner],
+    siteName: SITE_METADATA.title,
+    images: [SITE_METADATA.socialBanner],
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
     canonical: './',
     types: {
-      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+      'application/rss+xml': `${SITE_METADATA.siteUrl}/feed.xml`,
     },
   },
   robots: {
@@ -56,9 +58,9 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: siteMetadata.title,
+    title: SITE_METADATA.title,
     card: 'summary_large_image',
-    images: [siteMetadata.socialBanner],
+    images: [SITE_METADATA.socialBanner],
   },
 }
 
@@ -67,8 +69,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html
-      lang={siteMetadata.language}
-      className={`${roboto.variable} scroll-smooth`}
+      lang={SITE_METADATA.language}
+      className={`${ROBOTO.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link
@@ -96,12 +98,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
-          <UmamiAnalytics websiteId={siteMetadata.analytics?.umamiAnalytics?.umamiWebsiteId} />
-          {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
+          <UmamiAnalytics websiteId={SITE_METADATA.analytics?.umamiAnalytics?.umamiWebsiteId} />
+          {/* <Analytics analyticsConfig={SITE_METADATA.analytics as AnalyticsConfig} /> */}
           <SectionContainer>
-            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+            {/* <KBarSearchProvider configs={SITE_METADATA.search.kbarConfig}> */}
+            <SearchProvider searchConfig={SITE_METADATA.search as SearchConfig}>
               <Header />
               <main className="mb-auto">{children}</main>
+              {/* </KBarSearchProvider> */}
             </SearchProvider>
             <Footer />
           </SectionContainer>

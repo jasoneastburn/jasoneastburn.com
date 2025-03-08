@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { genPageMetadata } from 'app/seo'
 import { PageHeader } from '@/app/components/ui/PageHeader'
-import books from '@/data/books.json' assert { type: 'json' }
+import books from '../../json/books.json' assert { type: 'json' }
 import { BooksList } from '@/app/components/books/BooksList'
 import type { Books } from 'app/models/books'
 

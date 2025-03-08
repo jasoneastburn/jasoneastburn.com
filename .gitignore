@@ -49,3 +49,6 @@ yarn-error.log*
 #Firebase
 .firebase
 .vscode/settings.json
+
+#Supabase
+/supabase

@@ -6,9 +6,10 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
 //import { SearchArticles } from '~/components/blog/search-articles'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { PageHeader } from '@/app/components/ui/PageHeader'
-import type { CoreContent } from 'pliny/utils/contentlayer'
+import type { CoreContent } from '../models/mdx'
+import { SearchPosts } from '../components/blog/SearchPosts'
 
 interface PaginationProps {
   totalPages: number
@@ -86,7 +87,6 @@ export function ListLayout({
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
-  // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
@@ -97,7 +97,7 @@ export function ListLayout({
         description="I like to write about stuff I'm into. You'll find a mix of web dev articles, tech news, and random thoughts from my life. Use the search below to filter by title."
         className="border-b border-gray-200 dark:border-gray-700"
       >
-        {/* <SearchArticles label="Search articles" onChange={(e) => setSearchValue(e.target.value)} /> */}
+        <SearchPosts label="Search posts" onChange={(e) => setSearchValue(e.target.value)} />
       </PageHeader>
       {!filteredBlogPosts.length ? (
         <div className="py-10">No posts found.</div>

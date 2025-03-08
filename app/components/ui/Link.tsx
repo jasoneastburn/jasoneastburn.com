@@ -1,29 +1,26 @@
-import Link from 'next/link'
 import type { LinkProps } from 'next/link'
+import NextLink from 'next/link'
 import type { AnchorHTMLAttributes } from 'react'
 
-const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  const isAnchorLink = href && href.startsWith('#')
+export function Link({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>) {
   const isInternalLink = href && href.startsWith('/')
+  const isAnchorLink = href && href.startsWith('#')
 
   if (isInternalLink) {
-    return <Link className="break-words" href={href} {...rest} />
+    return <NextLink className="break-words" href={href} {...rest} />
   }
 
   if (isAnchorLink) {
-    return <a className="break-words" href={href} {...rest} aria-label={`Link for ${rest.title}`} />
+    return (
+      <a className="break-words" href={href} {...rest}>
+        {rest.children}
+      </a>
+    )
   }
 
   return (
-    <a
-      className="break-words"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={href}
-      {...rest}
-      aria-label={`Link for ${rest.title}`}
-    />
+    <a className="break-words" target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+      {rest.children || 'External Link'}
+    </a>
   )
 }
-
-export default CustomLink

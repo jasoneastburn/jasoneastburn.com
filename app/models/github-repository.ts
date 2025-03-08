@@ -13,7 +13,6 @@ export type GithubRepository = {
   repositoryTopics: string[]
   lastCommit?: GithubRepositoryCommit
 }
-
 export type CommitState = 'SUCCESS' | 'PENDING' | 'FAILURE' | 'ERROR' | 'EXPECTED'
 
 export type GithubRepositoryCommit = {

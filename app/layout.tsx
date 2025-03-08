@@ -1,5 +1,6 @@
 import 'app/css/tailwind.css'
 import 'app/css/twemoji.css'
+import 'pliny/search/algolia.css'
 import 'react-medium-image-zoom/dist/styles.css'
 import 'remark-github-blockquote-alert/alert.css'
 
@@ -11,7 +12,9 @@ import { SITE_METADATA } from '../data/site-metadata'
 import { ThemeProviders } from './theme-providers'
 import type { Metadata } from 'next'
 import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
-import { KBarSearchProvider } from '@/app/components/search/KBarSearchProvider'
+import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { SearchProvider, type SearchConfig } from 'pliny/search'
+// import { KBarSearchProvider } from '@/app/components/search/KBarSearchProvider'
 
 const ROBOTO = Roboto({
   weight: ['400', '700'],
@@ -98,10 +101,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <UmamiAnalytics websiteId={SITE_METADATA.analytics?.umamiAnalytics?.umamiWebsiteId} />
           {/* <Analytics analyticsConfig={SITE_METADATA.analytics as AnalyticsConfig} /> */}
           <SectionContainer>
-            <KBarSearchProvider configs={SITE_METADATA.search.kbarConfig}>
+            {/* <KBarSearchProvider configs={SITE_METADATA.search.kbarConfig}> */}
+            <SearchProvider searchConfig={SITE_METADATA.search as SearchConfig}>
               <Header />
               <main className="mb-auto">{children}</main>
-            </KBarSearchProvider>
+              {/* </KBarSearchProvider> */}
+            </SearchProvider>
             <Footer />
           </SectionContainer>
         </ThemeProviders>

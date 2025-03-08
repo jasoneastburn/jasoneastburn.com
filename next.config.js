@@ -7,14 +7,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is us.umami.is;
-  style-src 'self' 'unsafe-inline';
-  img-src * blob: data:;
-  media-src *.s3.amazonaws.com;
   connect-src *;
+  default-src 'self';
   font-src 'self';
   frame-src giscus.app *.github.io
+  img-src * blob: data:;
+  media-src *.s3.amazonaws.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is us.umami.is;
+  style-src 'self' 'unsafe-inline';
 `
 
 const securityHeaders = [
@@ -65,10 +65,10 @@ const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
-    output,
     basePath,
-    reactStrictMode: true,
+    output,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+    reactStrictMode: true,
     eslint: {
       dirs: ['app', 'components', 'layouts', 'lib', 'scripts'],
     },

@@ -1,19 +1,24 @@
 'use client'
 
+import { Twemoji } from '@/app/components/ui/Twemoji'
+import type { Books } from '@/app/models/books'
 import clsx from 'clsx'
 import { PenTool, Quote, type LucideProps } from 'lucide-react'
-import { useState } from 'react'
-import { Twemoji } from '@/app/components/ui/Twemoji'
-import type { Books } from 'app/models/books'
+import { useState, useCallback } from 'react'
 
 export function BookDetails({ book }: { book: Books }) {
   const [tab, setTab] = useState<'summary' | 'review'>('summary')
+
+  const handleTabChange = useCallback((newTab: 'summary' | 'review') => {
+    setTab(newTab)
+  }, [])
+
   return (
     <div className="space-y-3">
       <div className="-ml-1 flex items-center gap-2">
         <TabTrigger
           active={tab === 'summary'}
-          onClick={() => setTab('summary')}
+          onClick={() => handleTabChange('summary')}
           label="Summary"
           emoji="spiral-notepad"
         />
@@ -22,7 +27,7 @@ export function BookDetails({ book }: { book: Books }) {
             <span>/</span>
             <TabTrigger
               active={tab === 'review'}
-              onClick={() => setTab('review')}
+              onClick={() => handleTabChange('review')}
               label="My review"
               emoji="glowing-star"
             />

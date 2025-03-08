@@ -1,27 +1,27 @@
 export type GithubRepository = {
-  stargazerCount: number
   description: string
+  forkCount: number
   homepageUrl: string
   languages: {
     color: string
     name: string
   }[]
+  lastCommit?: GithubRepositoryCommit
   name: string
   nameWithOwner: string
-  url: string
-  forkCount: number
   repositoryTopics: string[]
-  lastCommit?: GithubRepositoryCommit
+  stargazerCount: number
+  url: string
 }
 export type CommitState = 'SUCCESS' | 'PENDING' | 'FAILURE' | 'ERROR' | 'EXPECTED'
 
 export type GithubRepositoryCommit = {
-  id: string
   abbreviatedOid: string
   committedDate: string
+  id: string
   message: string
-  url: string
   status: {
     state: CommitState
   }
+  url: string
 }

@@ -1,11 +1,11 @@
-import { clsx } from 'clsx'
 import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
-import { SITE_METADATA } from '@/data/site-metadata'
-import type { CoreContent } from '../../models/mdx'
-import { formatDate } from '../../utils/misc'
 import Tag from '@/app/components/ui/Tag'
+import type { CoreContent } from '@/app/models/mdx'
+import { formatDate } from '@/app/utils/misc'
+import { SITE_METADATA } from '@/data/site-metadata'
+import { clsx } from 'clsx'
 
 export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
   const { path, date, title, summary, images, readingTime, tags, slug } = post
@@ -17,7 +17,7 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
           className={clsx([
             'relative block shrink-0',
             'h-auto w-full md:aspect-[3/2]',
-            'pt-0 pr-3 pb-3 pl-0',
+            'pt-0 pl-0',
             'transition-all ease-in-out hover:pt-1 hover:pr-2 hover:pb-2 hover:pl-1',
           ])}
         >
@@ -32,14 +32,16 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
         <div className="w-full space-y-3">
           <div className="flex items-center gap-x-1.5 text-sm text-gray-600 dark:text-gray-400">
             <time dateTime={date}>{formatDate(date)}</time>
-            <span className="mx-1 text-gray-400">/</span>
+            <span className="text-gray-400">/</span>
             <span>{Math.ceil(readingTime.minutes)} mins read</span>
           </div>
           <div className="group relative">
             <h3 className="text-xl leading-6 font-semibold">
-              <Link href={`/${path}`}>{title}</Link>
+              <Link href={`/${path}`} className="hover:underline">
+                {title}
+              </Link>
             </h3>
-            <div className="flex flex-wrap">
+            <div className="mt-1 flex flex-wrap gap-1">
               {tags.map((tag) => (
                 <Tag key={tag} text={tag} />
               ))}
@@ -47,7 +49,7 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
             <p className="mt-4 line-clamp-2 text-sm leading-6 text-gray-600 md:mt-3 dark:text-gray-500">
               {summary}
             </p>
-            <div className="mt-4 text-base leading-6 font-medium">
+            <div className="mt-4 font-medium">
               <Link
                 href={`/blog/${slug}`}
                 className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"

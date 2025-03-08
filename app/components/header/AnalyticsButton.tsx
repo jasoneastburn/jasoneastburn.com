@@ -7,7 +7,7 @@ const AnalyticsButton = () => {
       type="button"
       className="hover:text-primary-500 dark:hover:text-primary-400"
       data-umami-event="view-analytics"
-      onClick={() => window.open(SITE_METADATA.analyticsUrl, '_blank')}
+      onClick={() => window.open(SITE_METADATA.analytics.umamiAnalytics.analyticsUrl, '_blank')}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

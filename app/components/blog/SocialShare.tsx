@@ -1,14 +1,14 @@
 'use client'
 
+import { DiscussOnX } from '@/app/components/blog/DiscussOnX'
+import { EditOnGithub } from '@/app/components/blog/EditOnGithub'
+import { SITE_METADATA } from '@/data/site-metadata'
 import { Menu, MenuButton, MenuItems, Transition } from '@headlessui/react'
 import { clsx } from 'clsx'
 import { Facebook, Link, Linkedin, Share2 } from 'lucide-react'
 import { Fragment, useState } from 'react'
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share'
-import { SITE_METADATA } from '@/data/site-metadata'
 import XIcon from '../../../public/icons/x.svg'
-import { DiscussOnX } from '@/app/components/blog/DiscussOnX'
-import { EditOnGithub } from '@/app/components/blog/EditOnGithub'
 
 type SocialButtonsProps = {
   postUrl: string

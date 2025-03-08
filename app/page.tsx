@@ -1,27 +1,28 @@
-import { allBlogs } from 'contentlayer/generated'
-import { signInAnonymously } from 'lib/firebase/auth'
 import Quote from '@/app/components/ui/Quote'
-import { getQuotes } from 'lib/firebase/firestore'
 import { TypedText } from '@/app/components/ui/TypedText'
-import { LatestPosts } from './home/LatestPosts'
-import { allCoreContent } from './utils/content-layer'
-import { sortPosts } from './utils/misc'
+import { LatestPosts } from '@/app/home/LatestPosts'
+import { allCoreContent } from '@/app/utils/content-layer'
+import { sortPosts } from '@/app/utils/misc'
+import { signInAnonymously } from '@/lib/firebase/auth'
+import { getQuotes } from '@/lib/firebase/firestore'
+import { allBlogs } from 'contentlayer/generated'
 
 export const dynamic = 'force-dynamic'
 
-async function signIn() {
-  return await signInAnonymously()
-}
-
-async function loadQuotes() {
-  return await getQuotes()
+async function fetchInitialData() {
+  try {
+    const [user, quotes] = await Promise.all([signInAnonymously(), getQuotes()])
+    return { user, quotes }
+  } catch (error) {
+    console.error('Error fetching initial data:', error)
+    return { user: null, quotes: [] }
+  }
 }
 
 export default async function Page() {
+  const { user, quotes } = await fetchInitialData()
   const sortedPosts = sortPosts(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  const user = await signIn()
-  const quotes = await loadQuotes()
+  const corePosts = allCoreContent(sortedPosts)
 
   return (
     <div>
@@ -36,7 +37,7 @@ export default async function Page() {
         at home.
       </p>
       <Quote quotes={quotes} />
-      <LatestPosts posts={posts} />
+      <LatestPosts posts={corePosts} />
     </div>
   )
 }

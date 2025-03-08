@@ -1,13 +1,16 @@
-import { genPageMetadata } from 'app/seo'
+import { ListLayoutWithTags } from '@/app/layouts/ListLayoutWithTags'
+import { genPageMetadata } from '@/app/seo'
+import { allCoreContent } from '@/app/utils/content-layer'
+import { sortPosts } from '@/app/utils/misc'
+import { SITE_METADATA } from '@/data/site-metadata'
+import tagData from '@/json/tag-data.json'
 import { allBlogs } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { SITE_METADATA } from '@/data/site-metadata'
-import tagData from 'app/tag-data.json'
-import { ListLayoutWithTags } from '../../layouts/ListLayoutWithTags'
-import { allCoreContent } from '../../utils/content-layer'
-import { sortPosts } from '../../utils/misc'
+
+interface TagPageProps {
+  params: { tag: string }
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>
@@ -27,21 +30,17 @@ export async function generateMetadata(props: {
 }
 
 export const generateStaticParams = async () => {
-  const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  const paths = tagKeys.map((tag) => ({
+  return Object.keys(tagData as Record<string, number>).map((tag) => ({
     tag: encodeURI(tag),
   }))
-  return paths
 }
 
 export default async function TagPage(props: { params: Promise<{ tag: string }> }) {
   const params = await props.params
   const tag = decodeURI(params.tag)
-  // Capitalize first letter and convert space to dash
-  const title = '#' + tag[0] + tag.split(' ').join('-').slice(1)
+  const title = `#${tag[0]}${tag.split(' ').join('-').slice(1)}`
   const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
+    sortPosts(allBlogs.filter((post) => post.tags?.map((t) => slug(t)).includes(tag)))
   )
 
   return (

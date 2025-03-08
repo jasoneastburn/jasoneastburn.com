@@ -1,10 +1,6 @@
 import type { Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 
-/**
- * Parses title from code block and inserts it as a sibling title node.
- *
- */
 export function remarkCodeTitles() {
   return (tree: Parent & { lang?: string }) =>
     visit(tree, 'code', (node: Parent & { lang?: string }, index: number, parent: Parent) => {

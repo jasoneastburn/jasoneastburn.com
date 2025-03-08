@@ -1,20 +1,20 @@
 'use client'
 
+import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
+import { SearchPosts } from '@/app/components/blog/SearchPosts'
+import { Link } from '@/app/components/ui/Link'
+import { PageHeader } from '@/app/components/ui/PageHeader'
+import type { CoreContent } from '@/app/models/mdx'
 import type { Blog } from 'contentlayer/generated'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
-//import { SearchArticles } from '~/components/blog/search-articles'
-import { Link } from '@/app/components/ui/Link'
-import { PageHeader } from '@/app/components/ui/PageHeader'
-import type { CoreContent } from '../models/mdx'
-import { SearchPosts } from '../components/blog/SearchPosts'
+import { useState, useMemo } from 'react'
 
 interface PaginationProps {
   totalPages: number
   currentPage: number
 }
+
 interface ListLayoutProps {
   posts: CoreContent<Blog>[]
   title: string
@@ -28,13 +28,20 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
+  const prevHref = useMemo(
+    () => (currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`),
+    [basePath, currentPage]
+  )
+
+  const nextHref = useMemo(() => `/${basePath}/page/${currentPage + 1}`, [basePath, currentPage])
+
   return (
     <div className="space-y-2 pt-6 pb-8 md:space-y-5">
       <nav className="flex justify-between">
         {prevPage ? (
           <Link
             className="hover:text-primary-500 dark:hover:text-primary-400 flex cursor-pointer items-center"
-            href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
+            href={prevHref}
             rel="prev"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -55,7 +62,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         {nextPage ? (
           <Link
             className="hover:text-primary-500 dark:hover:text-primary-400 flex cursor-pointer items-center"
-            href={`/${basePath}/page/${currentPage + 1}`}
+            href={nextHref}
             rel="next"
           >
             <span className="mr-1">Next</span>
@@ -82,13 +89,17 @@ export function ListLayout({
   pagination,
 }: ListLayoutProps) {
   const [searchValue, setSearchValue] = useState('')
-  const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags?.join(' ')
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
 
-  const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+  const filteredBlogPosts = useMemo(() => {
+    return posts.filter((post) => {
+      const searchContent = post.title + post.summary + (post.tags?.join(' ') || '')
+      return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+    })
+  }, [posts, searchValue])
+
+  const displayPosts = useMemo(() => {
+    return initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+  }, [initialDisplayPosts, filteredBlogPosts, searchValue])
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">

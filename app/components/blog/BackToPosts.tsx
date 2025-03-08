@@ -1,5 +1,5 @@
-import { MoveLeft } from 'lucide-react'
 import { Link } from '@/app/components/ui/Link'
+import { MoveLeft } from 'lucide-react'
 
 export function BackToPosts({ label, className }: { label: string; className?: string }) {
   return (

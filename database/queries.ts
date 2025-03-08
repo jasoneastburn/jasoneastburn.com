@@ -21,7 +21,6 @@ export async function updateBlogStats(
 ) {
   const currentStats = await getBlogStats(type, slug)
 
-  // Safeguard against negative updates
   for (const key in updates) {
     if (typeof updates[key] === 'number' && updates[key] < currentStats[key]) {
       updates[key] = currentStats[key]

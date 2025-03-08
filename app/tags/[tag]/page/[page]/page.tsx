@@ -3,7 +3,7 @@ import { allCoreContent } from 'app/utils/content-layer'
 import { sortPosts } from 'app/utils/misc'
 import { ListLayoutWithTags } from 'app/layouts/ListLayoutWithTags'
 import { allBlogs } from 'contentlayer/generated'
-import tagData from 'app/tag-data.json'
+import tagData from '@/json/tag-data.json'
 import { notFound } from 'next/navigation'
 
 const POSTS_PER_PAGE = 5

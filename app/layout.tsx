@@ -4,24 +4,24 @@ import 'pliny/search/algolia.css'
 import 'react-medium-image-zoom/dist/styles.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Roboto } from 'next/font/google'
+import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
+import Footer from '@/app/components/footer'
 import Header from '@/app/components/header'
 import SectionContainer from '@/app/components/ui/SectionContainer'
-import Footer from '@/app/components/footer'
-import { SITE_METADATA } from '../data/site-metadata'
-import { ThemeProviders } from './theme-providers'
+import { ThemeProviders } from '@/app/theme-providers'
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { Metadata } from 'next'
-import { UmamiAnalytics } from '@/app/components/analytics/UmamiAnalytics'
-import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { Roboto } from 'next/font/google'
 import { SearchProvider, type SearchConfig } from 'pliny/search'
 // import { KBarSearchProvider } from '@/app/components/search/KBarSearchProvider'
+//import type { Analytics, AnalyticsConfig } from 'pliny/analytics'
 
 const ROBOTO = Roboto({
-  weight: ['400', '700'],
+  display: 'swap',
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap',
   variable: '--font-roboto',
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -98,7 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
-          <UmamiAnalytics websiteId={SITE_METADATA.analytics?.umamiAnalytics?.umamiWebsiteId} />
+          <UmamiAnalytics websiteId={SITE_METADATA.analytics.umamiAnalytics.websiteId} />
           {/* <Analytics analyticsConfig={SITE_METADATA.analytics as AnalyticsConfig} /> */}
           <SectionContainer>
             {/* <KBarSearchProvider configs={SITE_METADATA.search.kbarConfig}> */}

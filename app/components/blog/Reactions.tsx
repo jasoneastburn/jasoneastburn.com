@@ -1,9 +1,9 @@
 'use client'
 
+import { Twemoji } from '@/app/components/ui/Twemoji'
+import type { SelectStats, StatsType } from '@/database/schema'
 import { clsx } from 'clsx'
 import { useEffect, useRef, useState } from 'react'
-import { Twemoji } from '@/app/components/ui/Twemoji'
-import type { SelectStats, StatsType } from '../../../database/schema'
 import { useBlogStats, useUpdateBlogStats } from '../../../hooks/use-blog-stats'
 
 const MAX_REACTIONS = 10

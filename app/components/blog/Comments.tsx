@@ -1,45 +1,45 @@
 'use client'
 
+import { SITE_METADATA } from '@/data/site-metadata'
 import type { BooleanString, InputPosition, Mapping } from '@giscus/react'
 import GiscusComponent from '@giscus/react'
 import { useTheme } from 'next-themes'
-import { SITE_METADATA } from '@/data/site-metadata'
 
 interface GiscusConfigs {
-  themeURL: string
-  theme: string
-  darkTheme: string
-  mapping: Mapping
-  repo: `${string}/${string}`
-  repositoryId: string
   category: string
   categoryId: string
-  reactions: BooleanString
-  metadata: BooleanString
+  darkTheme: string
   inputPosition: InputPosition
   lang: string
+  mapping: Mapping
+  metadata: BooleanString
+  reactions: BooleanString
+  repo: `${string}/${string}`
+  repositoryId: string
+  theme: string
+  themeURL: string
 }
 
 interface CommentsProps {
-  configs?: Partial<GiscusConfigs>
   className?: string
+  configs?: Partial<GiscusConfigs>
 }
 
 export function Comments({ configs, className }: CommentsProps) {
   const defaultConfigs = SITE_METADATA.comments.giscusConfig as GiscusConfigs
   const {
-    themeURL,
-    theme,
-    darkTheme,
-    repo,
-    repositoryId,
     category,
     categoryId,
-    reactions,
-    metadata,
+    darkTheme,
     inputPosition,
     lang,
     mapping,
+    metadata,
+    reactions,
+    repo,
+    repositoryId,
+    theme,
+    themeURL,
   } = { ...defaultConfigs, ...configs }
 
   const { theme: siteTheme, resolvedTheme } = useTheme()
@@ -53,18 +53,18 @@ export function Comments({ configs, className }: CommentsProps) {
   return (
     <div id="comment" className={className}>
       <GiscusComponent
-        id="comments-container"
-        repo={repo}
-        repoId={repositoryId}
         category={category}
         categoryId={categoryId}
-        mapping={mapping}
-        reactionsEnabled={reactions}
         emitMetadata={metadata}
+        id="comments-container"
         inputPosition={inputPosition}
-        theme={commentsTheme}
         lang={lang}
         loading="lazy"
+        mapping={mapping}
+        reactionsEnabled={reactions}
+        repo={repo}
+        repoId={repositoryId}
+        theme={commentsTheme}
       />
     </div>
   )

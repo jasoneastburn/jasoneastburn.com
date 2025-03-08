@@ -1,14 +1,27 @@
+import { Link } from '@/app/components/ui/Link'
 import { clsx } from 'clsx'
 import { ChevronRight } from 'lucide-react'
-import { Link } from '@/app/components/ui/Link'
+import React, { useMemo } from 'react'
 
 type TocItem = {
-  value: string
-  url: string
   depth: number
+  url: string
+  value: string
 }
 
 export function TableOfContents({ toc, className }: { toc: TocItem[]; className?: string }) {
+  const tocItems = useMemo(() => {
+    return toc.map(({ value, depth, url }) => (
+      <li
+        key={url}
+        className="font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+        style={{ paddingLeft: (depth - 2) * 16 }}
+      >
+        <Link href={url}>{value}</Link>
+      </li>
+    ))
+  }, [toc])
+
   return (
     <details
       className={clsx(
@@ -25,17 +38,7 @@ export function TableOfContents({ toc, className }: { toc: TocItem[]; className?
         />
         <div className="text-lg font-medium">Table of Contents</div>
       </summary>
-      <ul className="mb-4 flex flex-col space-y-2">
-        {toc.map(({ value, depth, url }) => (
-          <li
-            key={url}
-            className="font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
-            style={{ paddingLeft: (depth - 2) * 16 }}
-          >
-            <Link href={url}>{value}</Link>
-          </li>
-        ))}
-      </ul>
+      <ul className="mb-4 flex flex-col space-y-2">{tocItems}</ul>
     </details>
   )
 }

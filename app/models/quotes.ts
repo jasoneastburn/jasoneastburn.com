@@ -1,5 +1,5 @@
 export class Quotes {
-  id: string
   author: string
+  id: string
   quote: string
 }

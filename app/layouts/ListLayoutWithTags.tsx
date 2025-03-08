@@ -1,16 +1,14 @@
 'use client'
 
-import { clsx } from 'clsx'
-import type { Blog } from 'contentlayer/generated'
-import { useState } from 'react'
 import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
-import Tag from '@/app/components/ui/Tag'
-import { PageHeader } from '@/app/components/ui/PageHeader'
-import tagData from 'app/tag-data.json'
-import type { CoreContent } from '../models/mdx'
 import { Link } from '@/app/components/ui/Link'
-import { usePathname } from 'next/navigation'
+import { PageHeader } from '@/app/components/ui/PageHeader'
+import type { CoreContent } from '@/app/models/mdx'
+import tagData from '@/json/tag-data.json'
+import type { Blog } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
+import { usePathname } from 'next/navigation'
+import { useMemo } from 'react'
 
 interface ListLayoutProps {
   title: string
@@ -19,8 +17,6 @@ interface ListLayoutProps {
 }
 
 export function ListLayoutWithTags({ title, description, posts }: ListLayoutProps) {
-  const hasBlogs = posts.length > 0
-
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <PageHeader
@@ -28,10 +24,10 @@ export function ListLayoutWithTags({ title, description, posts }: ListLayoutProp
         description={description}
         className="border-b border-gray-200 dark:border-gray-700"
       />
-      <div className="flex flex-col-reverse gap-x-12 md:flex-row">
+      <div className="flex flex-col-reverse md:flex-row md:gap-x-12">
         <TagsList />
         <div className="flex-grow py-5 md:py-10">
-          <ul className="grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-8">
             {posts.map((post) => (
               <li key={post.path}>
                 <PostCardGridView post={post} />
@@ -46,9 +42,11 @@ export function ListLayoutWithTags({ title, description, posts }: ListLayoutProp
 
 function TagsList() {
   const tagCounts = tagData as Record<string, number>
-  const tagKeys = Object.keys(tagCounts)
-  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   const pathname = usePathname()
+
+  const sortedTags = useMemo(() => {
+    return Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a])
+  }, [tagCounts])
 
   return (
     <div className="mt-0 md:mt-10">
@@ -66,9 +64,10 @@ function TagsList() {
           )}
           <ul>
             {sortedTags.map((t) => {
+              const isActive = decodeURI(pathname.split('/tags/')[1]) === slug(t)
               return (
                 <li key={t} className="my-3">
-                  {decodeURI(pathname.split('/tags/')[1]) === slug(t) ? (
+                  {isActive ? (
                     <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
                       {`${t} (${tagCounts[t]})`}
                     </h3>

@@ -1,7 +1,7 @@
 'use client'
 
+import type { StatsType } from '@/database/schema'
 import { useEffect } from 'react'
-import type { StatsType } from '../../../database/schema'
 import { useBlogStats, useUpdateBlogStats } from '../../../hooks/use-blog-stats'
 
 export function ViewsCounter({

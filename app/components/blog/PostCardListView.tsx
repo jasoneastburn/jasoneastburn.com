@@ -1,31 +1,24 @@
-import clsx from 'clsx'
-import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
-import { SITE_METADATA } from '@/data/site-metadata'
 import Tag from '@/app/components/ui/Tag'
-import { formatDate } from '../../utils/misc'
+import { formatDate } from '@/app/utils/misc'
+import { SITE_METADATA } from '@/data/site-metadata'
 
 export function PostCardListView({ post, loading }) {
   const { slug, date, title, summary, tags, images, readingTime } = post
   return (
-    <article>
-      <div className="mb-4 flex flex-col gap-2 space-y-3 md:flex-row md:gap-8">
+    <article className="mb-4">
+      <div className="flex flex-col md:flex-row md:gap-8">
         <Link
           href={`/blog/${slug}`}
-          className={clsx([
-            'relative block shrink-0',
-            'h-60 w-full md:h-60 md:w-60',
-            'pt-0 pr-3 pb-3 pl-0',
-            'transition-all ease-in-out hover:pt-1 hover:pr-2 hover:pb-2 hover:pl-1',
-          ])}
+          className="relative mb-3 block h-60 w-full shrink-0 transition-transform hover:translate-x-1 hover:translate-y-1 md:w-60"
         >
           <Image
             src={images && images.length > 0 ? images[0] : SITE_METADATA.socialBanner}
             alt={title}
             width={60}
             height={60}
-            className={clsx(['h-60 rounded-xl shadow-2xl', 'w-full md:w-60'])}
+            className="mb-5 h-full w-full rounded-xl shadow-2xl"
             loading={loading}
           />
         </Link>

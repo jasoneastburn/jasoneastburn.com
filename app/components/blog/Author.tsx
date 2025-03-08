@@ -1,7 +1,7 @@
-import { type Author } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
-import type { CoreContent } from '../../models/mdx'
+import type { CoreContent } from '@/app/models/mdx'
+import { type Author } from 'contentlayer/generated'
 
 interface AuthorsProps {
   authors: CoreContent<Author>[]
@@ -13,9 +13,9 @@ export function Author({ authors, className }: AuthorsProps) {
     <dl className={className}>
       <dt className="sr-only">Authors</dt>
       <dd>
-        <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
-          {authors.map(({ name, avatar, twitter: x }) => (
-            <li key={name} className="flex items-center space-x-2">
+        <ul className="flex flex-wrap justify-center gap-4 sm:gap-x-12 xl:flex-col xl:gap-y-8">
+          {authors.map(({ name, avatar, x }) => (
+            <li key={name} className="flex items-center gap-2">
               {avatar && (
                 <Image
                   src={avatar}
@@ -25,22 +25,17 @@ export function Author({ authors, className }: AuthorsProps) {
                   className="h-10 w-10 rounded-full"
                 />
               )}
-              <dl className="text-sm leading-5 font-medium whitespace-nowrap">
-                <dt className="sr-only">Name</dt>
-                <dd className="text-gray-900 dark:text-gray-100">{name}</dd>
-                <dt className="sr-only">Twitter</dt>
-                <dd>
-                  {x && (
-                    <Link
-                      href={x}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      {/* {twitter.replace('https://twitter.com/', '@').replace('https://x.com/', '@')} */}
-                      {x.replace(/https:\/\/(x|twitter)\.com\//, '@')}
-                    </Link>
-                  )}
-                </dd>
-              </dl>
+              <div className="text-sm font-medium whitespace-nowrap">
+                <div className="text-gray-900 dark:text-gray-100">{name}</div>
+                {x && (
+                  <Link
+                    href={x}
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    {x.replace(/https:\/\/(x|twitter)\.com\//, '@')}
+                  </Link>
+                )}
+              </div>
             </li>
           ))}
         </ul>

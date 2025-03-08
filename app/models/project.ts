@@ -1,10 +1,10 @@
 export class Project {
-  id: string
   active: boolean
-  title: string
   description: string
-  links?: { url: string; label: string }[]
+  id: string
   image?: string
+  links?: { url: string; label: string }[]
   tech: string[]
+  title: string
   type: string
 }

@@ -1,29 +1,25 @@
-import type readingTime from 'reading-time'
-import type { StatsType } from '../../../database/schema'
-import { getTimeAgo } from '../../utils/misc'
 import { ViewsCounter } from '@/app/components/blog/ViewsCounter'
-import { formatDate } from '../../utils/misc'
+import { formatDate, getTimeAgo } from '@/app/utils/misc'
+import type { StatsType } from '@/database/schema'
+import type readingTime from 'reading-time'
 
 type BlogMetaProps = {
   date: string
   lastmod?: string
+  readingTime: ReturnType<typeof readingTime>
   slug: string
   type: StatsType
-  readingTime: ReturnType<typeof readingTime>
 }
 
 export function BlogMeta({ date, lastmod, type, slug, readingTime }: BlogMetaProps) {
   return (
     <dl>
       <dt className="sr-only">Published on</dt>
-      <dd className="flex flex-wrap items-center gap-2 text-sm leading-6 font-medium text-gray-500 md:text-base dark:text-gray-400">
-        <time dateTime={date} className="flex items-center justify-center">
-          <time dateTime={date}>{formatDate(date)}</time>
+      <dd className="flex flex-wrap items-center gap-2 text-sm font-medium text-gray-500 md:text-base dark:text-gray-400">
+        <time dateTime="{date}" className="flex items-center">
+          {formatDate(date)}
           {lastmod && (
-            <time
-              dateTime={date}
-              className="ml-1.5 hidden items-center justify-center md:ml-2 md:flex"
-            >
+            <time dateTime="{date}" className="ml-1.5 hidden items-center md:ml-2 md:flex">
               (<span>updated</span>
               <span className="ml-1.5">{getTimeAgo(lastmod)}</span>)
             </time>

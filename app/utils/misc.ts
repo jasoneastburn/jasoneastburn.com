@@ -1,4 +1,4 @@
-import type { MDXDocumentDate } from 'app/models/mdx'
+import type { MDXDocumentDate } from '@/app/models/mdx'
 
 export function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {

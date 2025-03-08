@@ -1,5 +1,5 @@
+import type { GithubRepository } from '@/app/models/github-repository'
 import { graphql, type GraphQlQueryResponseData } from '@octokit/graphql'
-import type { GithubRepository } from '../models/github-repository'
 
 const HISTORY_QUERY = `
   defaultBranchRef {

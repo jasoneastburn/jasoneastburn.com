@@ -1,9 +1,10 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
 import { BookCard } from '@/app/components/cards/BookCard'
-import type { Books } from 'app/models/books'
 import { SHELVES, ShelveSelect, type ShelfType } from '@/app/components/books/ShelveSelect'
+import type { Books } from '@/app/models/books'
+import { useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
 
 interface BooksListProps {
   books: Books[]
@@ -12,16 +13,22 @@ interface BooksListProps {
 export function BooksList({ books }: BooksListProps) {
   const searchParams = useSearchParams()
   const shelf = (searchParams.get('shelf') as ShelfType) || 'all'
-  const displayBooks =
-    shelf === 'all'
-      ? books
-      : books.filter((book) => {
-          if (shelf === 'read') {
-            return book.user_shelves === ''
-          }
-          return book.user_shelves.includes(shelf)
-        })
-  const { label } = SHELVES.find(({ value }) => value === shelf) || SHELVES[0]
+
+  const displayBooks = useMemo(() => {
+    if (shelf === 'all') {
+      return books
+    }
+    return books.filter((book) => {
+      if (shelf === 'read') {
+        return book.user_shelves === ''
+      }
+      return book.user_shelves.includes(shelf)
+    })
+  }, [books, shelf])
+
+  const { label } = useMemo(() => {
+    return SHELVES.find(({ value }) => value === shelf) || SHELVES[0]
+  }, [shelf])
 
   return (
     <div className="py-5 md:py-10">

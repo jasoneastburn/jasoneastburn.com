@@ -1,7 +1,7 @@
+import { fetcher } from '@/app/utils/misc'
+import type { SelectStats, StatsType } from '@/database/schema'
 import useSWR from 'swr'
 import useSWRMutation from 'swr/mutation'
-import type { SelectStats, StatsType } from '../database/schema'
-import { fetcher } from '../app/utils/misc'
 
 export function useBlogStats(type: StatsType, slug: string) {
   const { data, isLoading } = useSWR<SelectStats>(`/api/stats?slug=${slug}&type=${type}`, fetcher, {
@@ -11,13 +11,13 @@ export function useBlogStats(type: StatsType, slug: string) {
   })
   const { views, loves, applauses, ideas, bullseyes } = data || {}
   const stats: SelectStats = {
-    type,
-    slug,
-    views: views || 0,
-    loves: loves || 0,
     applauses: applauses || 0,
-    ideas: ideas || 0,
     bullseyes: bullseyes || 0,
+    ideas: ideas || 0,
+    loves: loves || 0,
+    slug,
+    type,
+    views: views || 0,
   }
   return [stats, isLoading] as const
 }

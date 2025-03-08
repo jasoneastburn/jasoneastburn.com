@@ -1,14 +1,14 @@
+import { MDXLayoutRenderer } from '@/app/components/mdx/MDXLayoutRenderer'
 import { Button } from '@/app/components/ui/Button'
 import { Image } from '@/app/components/ui/Image'
 import { PageHeader } from '@/app/components/ui/PageHeader'
 import { Timeline } from '@/app/components/ui/Timeline'
 import { Twemoji } from '@/app/components/ui/Twemoji'
+import type { CareerTimeline } from '@/app/models/career-timeline'
+import { genPageMetadata } from '@/app/seo'
 import { SITE_METADATA } from '@/data/site-metadata'
-import type { CareerTimeline } from 'app/models/career-timeline'
-import { genPageMetadata } from 'app/seo'
+import { getCareerTimeline } from '@/lib/firebase/firestore'
 import { type Author, allAuthors } from 'contentlayer/generated'
-import { getCareerTimeline } from 'lib/firebase/firestore'
-import { MDXLayoutRenderer } from '@/app/components/mdx/MDXLayoutRenderer'
 
 export const metadata = genPageMetadata({
   title: 'About',

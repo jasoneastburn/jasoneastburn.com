@@ -1,11 +1,10 @@
-import type { Metadata } from 'next'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SITE_METADATA } from '@/data/site-metadata'
-
+import type { Metadata } from 'next'
 interface PageSEOProps {
   title: string
   description?: string
   image?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 

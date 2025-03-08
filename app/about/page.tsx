@@ -8,7 +8,7 @@ import type { CareerTimeline } from 'app/models/career-timeline'
 import { genPageMetadata } from 'app/seo'
 import { type Author, allAuthors } from 'contentlayer/generated'
 import { getCareerTimeline } from 'lib/firebase/firestore'
-import { MDXLayoutRenderer } from '@/app/components/mdx/LayoutRenderer'
+import { MDXLayoutRenderer } from '@/app/components/mdx/MDXLayoutRenderer'
 
 export const metadata = genPageMetadata({
   title: 'About',
@@ -52,25 +52,24 @@ export default async function Page() {
               className="mt-3 [&_.image-container]:mx-0"
             >
               <Image
-                className="mt-6 mb-4"
+                className="mt-6 mb-4 h-15"
                 src="/images/about/bmc-button.png"
                 alt="Buy Me A Coffee"
                 width={213.7}
                 height={60}
-                style={{ height: 60 }}
               />
             </a>
             <a
               href={SITE_METADATA.support.paypal}
               target="_blank"
-              className="flex h-15 w-[214px] items-center justify-center rounded-lg bg-[#FFFFFF] p-1"
+              className="mt-3 flex h-16 w-52 items-center justify-center rounded-lg bg-white p-1"
             >
               <Image
                 src="/images/about/paypal-logo.png"
                 alt="Donate via PayPal"
                 width={225.88}
                 height={60}
-                style={{ height: 30, width: 'auto' }}
+                className="h-8"
               />
             </a>
           </div>
@@ -79,7 +78,7 @@ export default async function Page() {
               Hello, nerds! <Twemoji emoji="waving-hand" />
             </h2>
             <MDXLayoutRenderer code={author.body.code} />
-            <div className="mt-[2em] mb-[1em] flex items-center justify-between [&>h2]:my-0">
+            <div className="mt-8 mb-4 flex items-center justify-between [&>h2]:my-0">
               <h2 className="mb-0">Career</h2>
               <Button as="a" href="/files/resume.pdf" target="_blank">
                 <span>Resume</span>

@@ -31,7 +31,7 @@ env:
     secret: database-url
 
   - variable: GITHUB_API_TOKEN
-    secret: database-github-api-token
+    secret: github-api-token
 
   - variable: UMAMI_WEBSITE_ID
     secret: umami-website-id

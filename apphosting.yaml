@@ -26,3 +26,12 @@ env:
 
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     secret: firebase-measurement-id
+
+  - variable: DATABASE_URL
+    secret: database-url
+
+  - variable: GITHUB_API_TOKEN
+    secret: database-github-api-token
+
+  - variable: UMAMI_WEBSITE_ID
+    secret: umami-website-id

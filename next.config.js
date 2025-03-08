@@ -14,7 +14,7 @@ const ContentSecurityPolicy = `
   media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
-  frame-src giscus.app
+  frame-src giscus.app *.github.io
 `
 
 const securityHeaders = [
@@ -73,6 +73,12 @@ module.exports = () => {
       dirs: ['app', 'components', 'layouts', 'lib', 'scripts'],
     },
     images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'i.gr-assets.com',
+        },
+      ],
       unoptimized: true,
     },
     async headers() {

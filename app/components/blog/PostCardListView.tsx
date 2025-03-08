@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { SITE_METADATA } from '@/data/site-metadata'
-import Tag from '@/app/components/Tag'
+import Tag from '@/app/components/ui/Tag'
 import { formatDate } from 'pliny/utils/formatDate'
 
 export function PostCardListView({ post, loading }) {

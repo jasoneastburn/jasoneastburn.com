@@ -1,4 +1,4 @@
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import Tag from '@/app/components/Tag'
 import { slug } from 'github-slugger'
 import tagData from 'app/tag-data.json'

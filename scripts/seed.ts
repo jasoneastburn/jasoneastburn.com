@@ -43,7 +43,7 @@ export async function fetchGoodreadsBooks() {
           .replace(/\.([a-zA-Z0-9])/g, '. $1')
         book.content = book.content.replace(/\n/g, '').replace(/\s\s+/g, ' ')
       }
-      writeFileSync(`./data/books.json`, JSON.stringify(data.items))
+      writeFileSync(`../json/books.json`, JSON.stringify(data.items))
       console.log('📚 Books seeded.')
     } catch (error) {
       console.error(`Error fetching the Goodreads RSS feed: ${error.message}`)

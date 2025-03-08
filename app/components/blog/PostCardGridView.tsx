@@ -1,11 +1,11 @@
 import { clsx } from 'clsx'
 import type { Blog } from 'contentlayer/generated'
 import { Image } from '@/app/components/ui/Image'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { SITE_METADATA } from '@/data/site-metadata'
 import type { CoreContent } from 'pliny/utils/contentlayer'
 import { formatDate } from 'pliny/utils/formatDate'
-import Tag from '@/app/components/Tag'
+import Tag from '@/app/components/ui/Tag'
 
 export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
   const { path, date, title, summary, images, readingTime, tags, slug } = post

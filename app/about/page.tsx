@@ -6,7 +6,7 @@ import { Twemoji } from '@/app/components/ui/Twemoji'
 import { SITE_METADATA } from '@/data/site-metadata'
 import type { CareerTimeline } from 'app/models/career-timeline'
 import { genPageMetadata } from 'app/seo'
-import { type Authors, allAuthors } from 'contentlayer/generated'
+import { type Author, allAuthors } from 'contentlayer/generated'
 import { getCareerTimeline } from 'lib/firebase/firestore'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
@@ -21,7 +21,7 @@ async function loadCareerTimeline() {
 }
 
 export default async function Page() {
-  const author = allAuthors.find((p) => p.slug === 'default') as Authors
+  const author = allAuthors.find((p) => p.slug === 'default') as Author
   const careerTimeline: CareerTimeline[] = await loadCareerTimeline()
 
   return (

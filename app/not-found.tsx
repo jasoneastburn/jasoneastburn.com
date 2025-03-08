@@ -1,4 +1,4 @@
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from './components/ui/Twemoji'
 
 export default function NotFound() {

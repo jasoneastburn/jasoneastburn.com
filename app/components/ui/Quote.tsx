@@ -1,6 +1,6 @@
 import localFont from 'next/font/local'
 
-const quoteFont = localFont({ src: '../../public/fonts/sometimes.ttf' })
+const quoteFont = localFont({ src: '../../../public/fonts/sometimes.ttf' })
 
 export default function Quote({ quotes }) {
   const quote = quotes[Math.floor(Math.random() * quotes.length)]

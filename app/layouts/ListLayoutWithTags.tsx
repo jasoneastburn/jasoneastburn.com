@@ -8,7 +8,7 @@ import Tag from '@/app/components/Tag'
 import { PageHeader } from '@/app/components/ui/PageHeader'
 import tagData from 'app/tag-data.json'
 import type { CoreContent } from 'pliny/utils/contentlayer'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 

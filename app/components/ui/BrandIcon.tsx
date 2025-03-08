@@ -1,4 +1,4 @@
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import Bash from 'public/icons/bash.svg'
 import CSS from 'public/icons/css.svg'
 import Exercism from 'public/icons/exercism.svg'

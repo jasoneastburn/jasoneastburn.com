@@ -1,6 +1,6 @@
 'use client'
 
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { SITE_METADATA } from '@/data/site-metadata'
 import type { GithubRepository, CommitState } from 'app/models/github-repository'
 import useSWR from 'swr'
@@ -10,7 +10,6 @@ import { CheckCheck, Circle, X } from 'lucide-react'
 export function GithubCommit() {
   const siteRepo = SITE_METADATA.siteRepo.replace('https://github.com/', '')
   const { data: repo } = useSWR<GithubRepository>(`/api/github?repo=${siteRepo}`, fetcher)
-  console.log(repo)
 
   return (
     <div className="flex items-center">

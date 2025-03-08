@@ -29,6 +29,31 @@ export default function App() {
 }
 ```
 
+```js:tailwind.config.js showLineNumbers
+module.exports = {
+  theme: {
+    extend: {
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '.image-container': {
+              width: 'fit-content',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              img: {
+                marginTop: 0,
+                marginBottom: 0,
+              },
+            },
+            // ... more typography styles
+          },
+        },
+      }),
+    },
+  },
+}
+```
+
 Oh, and I will always leave ya with a terrific (or horrible) dad joke.
 
 > I tell dad jokes but I have no kids. I’m a faux pa!

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Minus, Plus } from 'lucide-react'
 import { Image } from '@/app/components/ui/Image'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import type { CareerTimeline } from 'app/models/career-timeline'
 

@@ -1,21 +1,19 @@
-import 'app/css/prism.css'
-import 'katex/dist/katex.css'
-
-import PageTitle from '@/app/components/PageTitle'
-import { components } from '@/app/components/MDXComponents'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
-import { allBlogs, allAuthors } from 'contentlayer/generated'
-import type { Authors, Blog } from 'contentlayer/generated'
-import PostSimple from 'app/layouts/PostSimple'
-import PostLayout from 'app/layouts/PostLayout'
-import PostBanner from 'app/layouts/PostBanner'
+import type { Author, Blog } from 'contentlayer/generated'
+import { allAuthors, allBlogs } from 'contentlayer/generated'
+// import 'css/prism.css'
 import type { Metadata } from 'next'
-import { SITE_METADATA } from '@/data/site-metadata'
 import { notFound } from 'next/navigation'
+import { MDX_COMPONENTS } from '@/app/components/mdx/MDXComponents'
+import { MDXLayoutRenderer } from '@/app/components/mdx/LayoutRenderer'
+import { SITE_METADATA } from '@/data/site-metadata'
+import { PostBanner } from '@/app/layouts/PostBanner'
+import { PostLayout } from '@/app/layouts/PostLayout'
+import { PostSimple } from '@/app/layouts/PostSimple'
+import { allCoreContent, coreContent } from '../../utils/content-layer'
+import { sortPosts } from 'pliny/utils/contentlayer'
 
-const defaultLayout = 'PostLayout'
-const layouts = {
+const DEFAULT_LAYOUT = 'PostLayout'
+const LAYOUTS = {
   PostSimple,
   PostLayout,
   PostBanner,
@@ -30,7 +28,7 @@ export async function generateMetadata(props: {
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
-    return coreContent(authorResults as Authors)
+    return coreContent(authorResults as Author)
   })
   if (!post) {
     return
@@ -93,7 +91,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
-    return coreContent(authorResults as Authors)
+    return coreContent(authorResults as Author)
   })
   const mainContent = coreContent(post)
   const jsonLd = post.structuredData
@@ -103,8 +101,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       name: author.name,
     }
   })
-
-  const Layout = layouts[post.layout || defaultLayout]
+  const Layout = LAYOUTS[post.layout || DEFAULT_LAYOUT]
 
   return (
     <>
@@ -113,7 +110,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
-        <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
+        <MDXLayoutRenderer code={post.body.code} components={MDX_COMPONENTS} toc={post.toc} />
       </Layout>
     </>
   )

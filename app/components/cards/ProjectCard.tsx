@@ -1,7 +1,7 @@
 import { Fragment, type Key } from 'react'
 import { Image } from '@/app/components/ui/Image'
 import { BrandIcon } from '@/app/components/ui/BrandIcon'
-import Link from '@/app/components/ui/Link'
+import { Link } from '@/app/components/ui/Link'
 import type { BrandsMap } from '@/app/components/ui/BrandIcon'
 import clsx from 'clsx'
 import { GradientBorder } from '@/app/components/ui/GradientBorder'

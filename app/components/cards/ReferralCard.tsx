@@ -2,8 +2,8 @@ import { clsx } from 'clsx'
 import type { BrandsMap } from '@/app/components/ui/BrandIcon'
 import { BrandIcon } from '@/app/components/ui/BrandIcon'
 import { GradientBorder } from '@/app/components/ui/GradientBorder'
-import Link from '@/app/components/ui/Link'
-import { title } from '@/data/SITE_METADATA'
+import { Link } from '@/app/components/ui/Link'
+import { SITE_METADATA } from '@/data/site-metadata'
 import Image from 'next/image'
 import { TiltedGridBackground } from '../ui/TiltedGridBackground'
 
@@ -23,7 +23,7 @@ export function ReferralCard({ description, image, link, name }) {
       >
         <div className="relative w-full px-4 pt-10 pb-6">
           <Image
-            alt={title}
+            alt={SITE_METADATA.title}
             src={image}
             className="absolute -top-10 z-10 text-gray-900 dark:text-white"
             width={125}

@@ -3,6 +3,7 @@
 import { Link } from '@/app/components/ui/Link'
 import type { GithubRepository, CommitState } from '@/app/models/github-repository'
 import { fetcher } from '@/app/utils/misc'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { SITE_METADATA } from '@/data/site-metadata'
 import { CheckCheck, Circle, X } from 'lucide-react'
 import useSWR from 'swr'
@@ -24,6 +25,7 @@ export function GithubCommit() {
         href={url}
         className="hover:text-primary-500 dark:hover:text-primary-400 text-gray-500 dark:text-gray-400"
         title={message}
+        data-umami-event={`github-commit-${lowercaseAndHyphenate(abbreviatedOid)}-visited`}
       >
         {abbreviatedOid}
       </Link>

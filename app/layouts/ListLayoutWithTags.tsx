@@ -4,6 +4,7 @@ import { PostCardGridView } from '@/app/components/blog/PostCardGridView'
 import { Link } from '@/app/components/ui/Link'
 import { PageHeader } from '@/app/components/ui/PageHeader'
 import type { CoreContent } from '@/app/models/mdx'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import tagData from '@/json/tag-data.json'
 import type { Blog } from 'contentlayer/generated'
 import { slug } from 'github-slugger'
@@ -58,6 +59,7 @@ function TagsList() {
             <Link
               href={`/blog`}
               className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+              data-umami-event="post-list-all-posts-clicked"
             >
               All Posts
             </Link>
@@ -76,6 +78,7 @@ function TagsList() {
                       href={`/tags/${slug(t)}`}
                       className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
                       aria-label={`View posts tagged ${t}`}
+                      data-umami-event={`post-list-tags-${lowercaseAndHyphenate(t)}-clicked`}
                     >
                       {`${t} (${tagCounts[t]})`}
                     </Link>

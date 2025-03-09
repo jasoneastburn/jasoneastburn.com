@@ -1,3 +1,4 @@
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import {
   Mail,
   Github,
@@ -47,6 +48,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
       target="_blank"
       rel="noopener noreferrer"
       href={href}
+      data-umami-event={`social-${lowercaseAndHyphenate(kind)}-visited`}
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg

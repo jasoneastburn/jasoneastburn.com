@@ -2,6 +2,7 @@
 
 import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from '@/app/components/ui/Twemoji'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { HEADER_NAV_LINKS, MORE_NAV_LINKS } from '@/data/navigation-links'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
@@ -29,7 +30,12 @@ const MobileNav = () => {
 
   return (
     <>
-      <button aria-label="Toggle menu" onClick={toggleNav} className="sm:hidden">
+      <button
+        aria-label="Toggle menu"
+        onClick={toggleNav}
+        className="sm:hidden"
+        data-umami-event={`mobile-header-toggle-nav-clicked`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -78,7 +84,12 @@ const MobileNav = () => {
                     className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
                   >
                     <Twemoji emoji={link.emoji} />
-                    <Link href={link.href} className="ml-3" onClick={toggleNav}>
+                    <Link
+                      href={link.href}
+                      className="ml-3"
+                      onClick={toggleNav}
+                      data-umami-event={`mobile-header-${lowercaseAndHyphenate(link.title)}-clicked`}
+                    >
                       {link.title}
                     </Link>
                   </div>
@@ -89,6 +100,7 @@ const MobileNav = () => {
                 className="hover:text-primary-500 dark:hover:text-primary-400 fixed top-7 right-4 z-80 h-16 w-16 p-4 text-gray-900 dark:text-gray-100"
                 aria-label="Close menu"
                 onClick={toggleNav}
+                data-umami-event={`mobile-header-toggle-nav-clicked`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path

@@ -2,6 +2,7 @@ import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import type { CareerTimeline } from '@/app/models/career-timeline'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import clsx from 'clsx'
 import { Minus, Plus } from 'lucide-react'
 
@@ -55,6 +56,7 @@ function TimelineItem({ exp, last }: { exp: CareerTimeline; last: boolean }) {
               'transition-transform duration-300 ease-in-out',
               'text-gray-600 dark:text-gray-500',
             ])}
+            data-umami-event={`${lowercaseAndHyphenate(event)}-expanded`}
           />
           <Minus
             size={18}
@@ -65,6 +67,7 @@ function TimelineItem({ exp, last }: { exp: CareerTimeline; last: boolean }) {
               'transition-transform duration-300 ease-in-out',
               'text-gray-600 dark:text-gray-500',
             ])}
+            data-umami-event={`${lowercaseAndHyphenate(event)}-collapsed`}
           />
           <div className="flex flex-col">
             <div className="line-clamp-1 text-xs text-gray-500 tabular-nums dark:text-gray-400">
@@ -73,6 +76,7 @@ function TimelineItem({ exp, last }: { exp: CareerTimeline; last: boolean }) {
             <Link
               href={url}
               className="line-clamp-1 w-fit font-semibold text-gray-900 no-underline hover:text-gray-900 dark:text-white dark:hover:text-white"
+              data-umami-event={`${lowercaseAndHyphenate(event)}-visited`}
             >
               <div>{org}</div>
             </Link>

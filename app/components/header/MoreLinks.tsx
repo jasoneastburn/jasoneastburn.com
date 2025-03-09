@@ -2,6 +2,7 @@
 
 import { Link } from '@/app/components/ui/Link'
 import { Twemoji } from '@/app/components/ui/Twemoji'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { MORE_NAV_LINKS } from '@/data/navigation-links'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import { ChevronDown } from 'lucide-react'
@@ -14,6 +15,7 @@ export function MoreLinks() {
         <MenuButton
           aria-label="More links"
           className="hover:text-primary-500 dark:hover:text-primary-400 flex items-center font-medium text-gray-900 dark:text-gray-100"
+          data-umami-event="header-more-clicked"
         >
           <span>More</span>
           <ChevronDown strokeWidth={1.5} size={20} />
@@ -36,9 +38,10 @@ export function MoreLinks() {
                       href={href}
                       className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 hover:bg-gray-200 dark:hover:bg-gray-800"
                       onClick={close}
+                      data-umami-event={`header-${lowercaseAndHyphenate(title)}-clicked`}
                     >
                       <Twemoji emoji={emoji} />
-                      <span data-umami-event={`nav-${href.replace('/', '')}`}>{title}</span>
+                      {title}
                     </Link>
                   )}
                 </MenuItem>

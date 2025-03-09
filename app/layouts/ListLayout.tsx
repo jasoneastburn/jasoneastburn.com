@@ -43,6 +43,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             className="hover:text-primary-500 dark:hover:text-primary-400 flex cursor-pointer items-center"
             href={prevHref}
             rel="prev"
+            data-umami-event="post-list-previous-page-clicked"
           >
             <ArrowLeft className="h-4 w-4" />
             <span className="ml-1">Previous</span>
@@ -64,6 +65,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             className="hover:text-primary-500 dark:hover:text-primary-400 flex cursor-pointer items-center"
             href={nextHref}
             rel="next"
+            data-umami-event="post-list-next-page-clicked"
           >
             <span className="mr-1">Next</span>
             <ArrowRight className="h-4 w-4" />

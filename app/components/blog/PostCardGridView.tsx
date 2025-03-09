@@ -6,6 +6,7 @@ import type { CoreContent } from '@/app/models/mdx'
 import { formatDate } from '@/app/utils/misc'
 import { SITE_METADATA } from '@/data/site-metadata'
 import { clsx } from 'clsx'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
   const { path, date, title, summary, images, readingTime, tags, slug } = post
@@ -20,6 +21,7 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
             'pt-0 pl-0',
             'transition-all ease-in-out hover:pt-1 hover:pr-2 hover:pb-2 hover:pl-1',
           ])}
+          data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
         >
           <Image
             src={images && images.length > 0 ? images[0] : SITE_METADATA.socialBanner}
@@ -37,7 +39,11 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
           </div>
           <div className="group relative">
             <h3 className="text-xl leading-6 font-semibold">
-              <Link href={`/${path}`} className="hover:underline">
+              <Link
+                href={`/${path}`}
+                className="hover:underline"
+                data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
+              >
                 {title}
               </Link>
             </h3>
@@ -53,6 +59,7 @@ export function PostCardGridView({ post }: { post: CoreContent<Blog> }) {
               <Link
                 href={`/blog/${slug}`}
                 className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
                 aria-label={`Read more: "${title}"`}
               >
                 Read more &rarr;

@@ -5,6 +5,7 @@ import type { SelectStats, StatsType } from '@/database/schema'
 import { clsx } from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 import { useBlogStats, useUpdateBlogStats } from '../../../hooks/use-blog-stats'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 const MAX_REACTIONS = 10
 
@@ -130,7 +131,7 @@ function Reaction({
       onClick={handleReact}
       onMouseLeave={handleMouseLeave}
       className="relative flex cursor-pointer flex-col items-center justify-center gap-1.5"
-      data-umami-event="post-reaction"
+      data-umami-event={`post-reaction-${lowercaseAndHyphenate(emoji)}-clicked`}
     >
       <Twemoji
         emoji={emoji}

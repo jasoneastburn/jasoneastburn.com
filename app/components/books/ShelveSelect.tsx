@@ -1,4 +1,5 @@
 import { Link } from '@/app/components/ui/Link'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
@@ -41,7 +42,7 @@ export function ShelveSelect({ shelf }: { shelf: ShelfType }) {
         <MenuButton
           aria-label="More links"
           className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 font-medium dark:border-gray-700"
-          data-umami-event="movies-rate-filter"
+          data-umami-event="books-shelf-opened"
         >
           <span>{label}</span>
           <ChevronDown strokeWidth={1.5} size={20} />
@@ -76,8 +77,9 @@ export function ShelveSelect({ shelf }: { shelf: ShelfType }) {
                       ])}
                       href={`/books?shelf=${value}`}
                       onClick={close}
+                      data-umami-event={`books-shelf-${lowercaseAndHyphenate(label)}-selected`}
                     >
-                      <span data-umami-event="books-shelf-select">{label}</span>
+                      <span>{label}</span>
                     </Link>
                   )}
                 </MenuItem>

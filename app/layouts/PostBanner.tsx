@@ -68,37 +68,6 @@ function PostHeader({
   )
 }
 
-function Credit({ image, className }: { image: string; className?: string }) {
-  const parts = image.split('__')
-  if (parts.length === 3) {
-    const [, author, id] = parts
-    return (
-      <div className={clsx('text-right text-sm italic', className)}>
-        Photo by{' '}
-        <a
-          className="text-primary-500 dark:text-primary-400 underline-offset-4 hover:underline"
-          href={`https://unsplash.com/@${author}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span data-umami-event="banner-author">@{author}</span>
-        </a>{' '}
-        on{' '}
-        <a
-          className="text-primary-500 dark:text-primary-400 underline-offset-4 hover:underline"
-          href={`https://unsplash.com/photos/${id}`}
-          target="_blank"
-          rel="noreferrer"
-          data-umami-event="unsplash-link"
-        >
-          <span data-umami-event="banner-unsplash">Unsplash</span>
-        </a>
-      </div>
-    )
-  }
-  return null
-}
-
 export const PostBanner = React.memo(function PostBanner({ content, children }: LayoutProps) {
   const { slug, type, title, images, date, lastmod, readingTime, tags, filePath } = content
   const postUrl = `${SITE_METADATA.siteUrl}/${type.toLowerCase()}/${slug}`
@@ -126,9 +95,9 @@ export const PostBanner = React.memo(function PostBanner({ content, children }: 
         <div className="space-y-8 border-t border-gray-200 pt-4 dark:border-gray-700">
           <div className="flex justify-between gap-4">
             <div className="flex items-center gap-2">
-              <DiscussOnX postUrl={postUrl} />
+              <DiscussOnX postUrl={postUrl} postTitle={title} />
               <span className="text-gray-500">/</span>
-              <EditOnGithub filePath={filePath} />
+              <EditOnGithub filePath={filePath} postTitle={title} />
             </div>
           </div>
           <Comments />

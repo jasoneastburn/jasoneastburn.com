@@ -2,6 +2,7 @@
 
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import type { Books } from '@/app/models/books'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import clsx from 'clsx'
 import { PenTool, Quote, type LucideProps } from 'lucide-react'
 import { useState, useCallback } from 'react'
@@ -21,6 +22,7 @@ export function BookDetails({ book }: { book: Books }) {
           onClick={() => handleTabChange('summary')}
           label="Summary"
           emoji="spiral-notepad"
+          author={book.author_name}
         />
         {book.user_review && (
           <>
@@ -28,8 +30,9 @@ export function BookDetails({ book }: { book: Books }) {
             <TabTrigger
               active={tab === 'review'}
               onClick={() => handleTabChange('review')}
-              label="My review"
+              label="My Review"
               emoji="glowing-star"
+              author={book.author_name}
             />
           </>
         )}
@@ -45,8 +48,14 @@ export function BookDetails({ book }: { book: Books }) {
   )
 }
 
-function TabTrigger(props: { active: boolean; onClick: () => void; label: string; emoji: string }) {
-  const { active, onClick, label, emoji } = props
+function TabTrigger(props: {
+  active: boolean
+  onClick: () => void
+  label: string
+  emoji: string
+  author: string
+}) {
+  const { active, onClick, label, emoji, author } = props
   return (
     <button
       onClick={onClick}
@@ -54,6 +63,7 @@ function TabTrigger(props: { active: boolean; onClick: () => void; label: string
         'inline-flex items-center gap-1 font-medium underline-offset-4',
         active ? 'underline' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-100'
       )}
+      data-umami-event={`books-${lowercaseAndHyphenate(author)}-${lowercaseAndHyphenate(label)}`}
     >
       <Twemoji emoji={emoji} />
       <span>{label}</span>

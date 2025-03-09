@@ -32,6 +32,7 @@ import Typescript from 'public/icons/typescript.svg'
 import Umami from 'public/icons/umami.svg'
 import VSCode from 'public/icons/vscode.svg'
 import Webpack from 'public/icons/webpack.svg'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 export const BrandsMap: Record<
   string,
@@ -205,7 +206,11 @@ export function BrandIcon(props: {
   }
 
   return (
-    <Link href={`${url}?ref=jasoneastburn.com`} className={className}>
+    <Link
+      href={`${url}?ref=jasoneastburn.com`}
+      className={className}
+      data-umami-event={`${lowercaseAndHyphenate(name)}-visited`}
+    >
       <Icon className={iconClassName} fill="currentColor" />
     </Link>
   )

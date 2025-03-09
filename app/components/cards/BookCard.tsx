@@ -7,6 +7,7 @@ import { TiltedGridBackground } from '@/app/components/ui/TiltedGridBackground'
 import { Twemoji } from '@/app/components/ui/Twemoji'
 import type { Books } from '@/app/models/books'
 import GoodreadsLogo from '../../../public/images/books/goodreads.svg'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 export function BookCard({ book }: { book: Books }) {
   const goodreadsUrl = getBookUrl(book.content)
@@ -21,7 +22,16 @@ export function BookCard({ book }: { book: Books }) {
         <div className="space-y-4">
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-12 text-xl font-semibold md:text-2xl">
-              {book.link ? <Link href={book.link}>{book.title}</Link> : <h3>{book.title}</h3>}
+              {book.link ? (
+                <Link
+                  href={book.link}
+                  data-umami-event={`books-${lowercaseAndHyphenate(book.author_name)}-goodreads-review`}
+                >
+                  {book.title}
+                </Link>
+              ) : (
+                <h3>{book.title}</h3>
+              )}
               <Rating rating={book.user_rating} className="hidden md:inline-flex" />
             </div>
           </div>
@@ -30,7 +40,10 @@ export function BookCard({ book }: { book: Books }) {
         <div className="flex items-center justify-between">
           <BookMeta book={book} />
           {goodreadsUrl && (
-            <Link href={goodreadsUrl}>
+            <Link
+              href={goodreadsUrl}
+              data-umami-event={`books-${lowercaseAndHyphenate(book.author_name)}-goodreads`}
+            >
               <GoodreadsLogo className="text-goodreads h-5 dark:text-gray-100" />
             </Link>
           )}

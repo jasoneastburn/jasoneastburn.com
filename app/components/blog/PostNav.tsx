@@ -1,4 +1,5 @@
 import { Link } from '@/app/components/ui/Link'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 export function PostNav({
   next,
@@ -17,7 +18,12 @@ export function PostNav({
         {prev && prev.path ? (
           <div className="flex flex-col gap-1">
             <NavLabel label={`←  ${prevLabel}`} />
-            <Link href={`/${prev.path}`}>{prev.title}</Link>
+            <Link
+              href={`/${prev.path}`}
+              data-umami-event={`post-previous-${lowercaseAndHyphenate(prevLabel!)}-clicked`}
+            >
+              {prev.title}
+            </Link>
           </div>
         ) : (
           <div />
@@ -25,7 +31,12 @@ export function PostNav({
         {next && next.path && (
           <div className="flex flex-col items-end gap-1 text-right">
             <NavLabel label={`${nextLabel}  →`} />
-            <Link href={`/${next.path}`}>{next.title}</Link>
+            <Link
+              href={`/${next.path}`}
+              data-umami-event={`post-next-${lowercaseAndHyphenate(prevLabel!)}-clicked`}
+            >
+              {next.title}{' '}
+            </Link>
           </div>
         )}
       </div>

@@ -38,7 +38,7 @@ export function BooksList({ books }: BooksListProps) {
           <span className="font-normal">({displayBooks.length})</span>
         </span>
         <div className="flex items-center gap-1 md:gap-2">
-          <span>Shelve: </span>
+          <span>Shelf: </span>
           <ShelveSelect shelf={shelf} />
         </div>
       </div>

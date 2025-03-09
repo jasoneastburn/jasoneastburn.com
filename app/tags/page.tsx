@@ -1,6 +1,7 @@
 import { Link } from '@/app/components/ui/Link'
 import Tag from '@/app/components/ui/Tag'
 import { genPageMetadata } from '@/app/seo'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import tagData from '@/json/tag-data.json'
 import { slug } from 'github-slugger'
 
@@ -26,6 +27,7 @@ export default async function Page() {
               <Link
                 href={`/tags/${slug(tag)}`}
                 className="-ml-2 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
+                data-umami-event={`tags-${lowercaseAndHyphenate(tag)}-clicked`}
                 aria-label={`View posts tagged ${tag}`}
               >
                 {` (${count})`}

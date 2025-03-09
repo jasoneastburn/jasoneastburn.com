@@ -1,5 +1,6 @@
 'use client'
 
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { clsx } from 'clsx'
 import { ChevronsUp, MessageSquareText } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -49,6 +50,7 @@ function ScrollButton({
         'hover:bg-gray-100 dark:hover:bg-gray-800',
         'ring-1 ring-zinc-900/20 ring-inset dark:ring-white/20',
       ])}
+      data-umami-event={`post-${lowercaseAndHyphenate(ariaLabel)}-clicked`}
     >
       <Icon className="h-5 w-5" />
     </button>

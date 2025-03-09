@@ -50,6 +50,7 @@ export default async function Page() {
               href={SITE_METADATA.support.buyMeACoffee}
               target="_blank"
               className="mt-3 [&_.image-container]:mx-0"
+              data-umami-event="support-bmc-visited"
             >
               <Image
                 className="mt-6 mb-4 h-15"
@@ -63,6 +64,7 @@ export default async function Page() {
               href={SITE_METADATA.support.paypal}
               target="_blank"
               className="mt-3 flex h-16 w-52 items-center justify-center rounded-lg bg-white p-1"
+              data-umami-event="support-paypal-visited"
             >
               <Image
                 src="/images/about/paypal-logo.png"
@@ -80,7 +82,12 @@ export default async function Page() {
             <MDXLayoutRenderer code={author.body.code} />
             <div className="mt-8 mb-4 flex items-center justify-between [&>h2]:my-0">
               <h2 className="mb-0">Career</h2>
-              <Button as="a" href="/files/resume.pdf" target="_blank">
+              <Button
+                as="a"
+                href="/files/resume.pdf"
+                target="_blank"
+                data-umami-event="open-resume"
+              >
                 <span>Resume</span>
                 <Twemoji emoji="page-facing-up" />
               </Button>

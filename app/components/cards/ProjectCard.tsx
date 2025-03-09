@@ -4,6 +4,7 @@ import { GradientBorder } from '@/app/components/ui/GradientBorder'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import { TiltedGridBackground } from '@/app/components/ui/TiltedGridBackground'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import clsx from 'clsx'
 import { Fragment, useMemo } from 'react'
 
@@ -34,7 +35,11 @@ const ProjectCard = ({ title, description, imgSrc, links, tech }: ProjectCardPro
     if (imgSrc) {
       if (hasLink) {
         return (
-          <Link href={links![0].url} aria-label={`Link to ${title}`}>
+          <Link
+            href={links![0].url}
+            aria-label={`Link to ${title}`}
+            data-umami-event={`${lowercaseAndHyphenate(title)}-visited`}
+          >
             <Image {...imageProps} alt={imageProps.alt || ''} />
           </Link>
         )
@@ -48,7 +53,11 @@ const ProjectCard = ({ title, description, imgSrc, links, tech }: ProjectCardPro
   const titleElement = useMemo(() => {
     if (hasLink) {
       return (
-        <Link href={links![0].url} aria-label={`Link to ${title}`}>
+        <Link
+          href={links![0].url}
+          aria-label={`Link to ${title}`}
+          data-umami-event={`${lowercaseAndHyphenate(title)}-visited`}
+        >
           {title}
         </Link>
       )
@@ -59,7 +68,11 @@ const ProjectCard = ({ title, description, imgSrc, links, tech }: ProjectCardPro
   const linkElements = useMemo(() => {
     return links?.map(({ label, url }, idx) => (
       <Fragment key={url}>
-        <Link href={url} className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+        <Link
+          href={url}
+          className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400"
+          data-umami-event={`${lowercaseAndHyphenate(title)}-visited`}
+        >
           {label}
         </Link>
         {idx !== links.length - 1 && (
@@ -67,7 +80,7 @@ const ProjectCard = ({ title, description, imgSrc, links, tech }: ProjectCardPro
         )}
       </Fragment>
     ))
-  }, [links])
+  }, [links, title])
 
   const techElements = useMemo(() => {
     return tech?.map((tool) => (

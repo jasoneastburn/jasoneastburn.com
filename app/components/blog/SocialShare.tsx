@@ -9,6 +9,7 @@ import { Facebook, Link, Linkedin, Share2 } from 'lucide-react'
 import { Fragment, useState } from 'react'
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share'
 import XIcon from '../../../public/icons/x.svg'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 
 type SocialButtonsProps = {
   postUrl: string
@@ -36,7 +37,7 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
           'flex items-center gap-1 px-3 py-1 font-medium text-gray-500 dark:text-gray-400',
           className
         )}
-        data-umami-event="social-share"
+        data-umami-event="post-share-clicked"
       >
         <span>Share</span>
         <Share2 strokeWidth={1.5} size={16} />
@@ -64,6 +65,7 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
             <button
               onClick={handleCopyLink}
               className="flex items-center gap-2.5 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              data-umami-event={`post-${lowercaseAndHyphenate(title)}-copy-clicked`}
             >
               <Link strokeWidth={1.5} size={18} />
               <span>{copied ? 'Copied' : 'Copy link'}</span>
@@ -75,6 +77,7 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
               title={title}
               via={SITE_METADATA.x}
               className="flex items-center gap-2.5 !text-gray-600 hover:!text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-100"
+              data-umami-event={`post-${lowercaseAndHyphenate(title)}-share-x-clicked`}
             >
               <XIcon className="h-4 w-4" fill="#fff" viewBox="0 0 1200 1227" />
               <span className="">Share on X</span>
@@ -83,6 +86,7 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
               url={postUrl}
               title={title}
               className="flex items-center gap-2.5 !text-gray-600 hover:!text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-100"
+              data-umami-event={`post-${lowercaseAndHyphenate(title)}-share-li-clicked`}
             >
               <Linkedin strokeWidth={1.5} size={18} />
               <span className="">Share on LinkedIn</span>
@@ -90,14 +94,15 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
             <FacebookShareButton
               url={postUrl}
               className="flex items-center gap-2.5 !text-gray-600 hover:!text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-100"
+              data-umami-event={`post-${lowercaseAndHyphenate(title)}-share-fb-clicked`}
             >
               <Facebook strokeWidth={1.5} size={18} />
               <span className="">Share on Facebook</span>
             </FacebookShareButton>
           </div>
           <div className="flex flex-col gap-3 px-4 py-3">
-            <DiscussOnX postUrl={postUrl} />
-            <EditOnGithub filePath={filePath} />
+            <DiscussOnX postUrl={postUrl} postTitle={title} />
+            <EditOnGithub filePath={filePath} postTitle={title} />
           </div>
         </MenuItems>
       </Transition>

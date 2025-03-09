@@ -2,6 +2,7 @@ import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import Tag from '@/app/components/ui/Tag'
 import { formatDate } from '@/app/utils/misc'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { SITE_METADATA } from '@/data/site-metadata'
 
 export function PostCardListView({ post, loading }) {
@@ -12,6 +13,7 @@ export function PostCardListView({ post, loading }) {
         <Link
           href={`/blog/${slug}`}
           className="relative mb-3 block h-60 w-full shrink-0 transition-transform hover:translate-x-1 hover:translate-y-1 md:w-60"
+          data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
         >
           <Image
             src={images && images.length > 0 ? images[0] : SITE_METADATA.socialBanner}
@@ -35,7 +37,11 @@ export function PostCardListView({ post, loading }) {
               </dl>
               <div>
                 <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                  <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
+                  <Link
+                    href={`/blog/${slug}`}
+                    className="text-gray-900 dark:text-gray-100"
+                    data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
+                  >
                     {title}
                   </Link>
                 </h2>
@@ -54,6 +60,7 @@ export function PostCardListView({ post, loading }) {
             <Link
               href={`/blog/${slug}`}
               className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              data-umami-event={`post-${lowercaseAndHyphenate(title)}-clicked`}
               aria-label={`Read more: "${title}"`}
             >
               Read more &rarr;

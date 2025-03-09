@@ -1,5 +1,6 @@
 'use client'
 
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { clsx } from 'clsx'
 import { Check, Copy } from 'lucide-react'
 import { useState } from 'react'
@@ -41,6 +42,7 @@ export function CopyCodeButton({
         className,
       ])}
       onClick={handleCopy}
+      data-umami-event={`post-${parent}-copy-code-clicked`}
     >
       {copied ? <Check className="h-4.5 w-4.5" /> : <Copy className="h-4.5 w-4.5" />}
     </button>

@@ -1,5 +1,6 @@
 'use client'
 
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import {
   Menu,
   MenuButton,
@@ -64,7 +65,7 @@ const ThemeSwitch = () => {
     <div className="flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div className="hover:text-primary-500 dark:hover:text-primary-400 flex items-center justify-center">
-          <MenuButton aria-label="Theme switcher">
+          <MenuButton aria-label="Theme switcher" data-umami-event="header-theme-clicked">
             {mounted ? resolvedTheme === 'dark' ? <Moon /> : <Sun /> : <Blank />}
           </MenuButton>
         </div>
@@ -85,6 +86,7 @@ const ThemeSwitch = () => {
                     {({ focus }) => (
                       <button
                         className={`${focus ? 'hover:bg-gray-200 dark:hover:bg-gray-800' : ''} group flex w-full items-center rounded-md px-2 py-2 font-medium`}
+                        data-umami-event={`header-theme-${lowercaseAndHyphenate(theme!)}-clicked`}
                       >
                         <div className="mr-2">
                           <Sun />
@@ -101,6 +103,7 @@ const ThemeSwitch = () => {
                         className={`${
                           focus ? 'text-white hover:bg-gray-200 dark:hover:bg-gray-800' : ''
                         } group flex w-full items-center rounded-md px-2 py-2 font-medium`}
+                        data-umami-event={`header-theme-${lowercaseAndHyphenate(theme!)}-clicked`}
                       >
                         <div className="mr-2">
                           <Moon />
@@ -117,6 +120,7 @@ const ThemeSwitch = () => {
                         className={`${
                           focus ? 'text-white hover:bg-gray-200 dark:hover:bg-gray-800' : ''
                         } group flex w-full items-center rounded-md px-2 py-2 font-medium`}
+                        data-umami-event={`header-theme-${lowercaseAndHyphenate(theme!)}-clicked`}
                       >
                         <div className="mr-2">
                           <Monitor />

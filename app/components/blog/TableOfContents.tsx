@@ -1,4 +1,5 @@
 import { Link } from '@/app/components/ui/Link'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { clsx } from 'clsx'
 import { ChevronRight } from 'lucide-react'
 import React, { useMemo } from 'react'
@@ -17,7 +18,9 @@ export function TableOfContents({ toc, className }: { toc: TocItem[]; className?
         className="font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
         style={{ paddingLeft: (depth - 2) * 16 }}
       >
-        <Link href={url}>{value}</Link>
+        <Link href={url} data-umami-event={`post-${lowercaseAndHyphenate(value)}-toc-clicked`}>
+          {value}
+        </Link>
       </li>
     ))
   }, [toc])

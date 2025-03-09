@@ -7,6 +7,7 @@ import SearchButton from '@/app/components/header/SearchButton'
 import ThemeSwitch from '@/app/components/header/ThemeSwitch'
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { HEADER_NAV_LINKS } from '@/data/navigation-links'
 import { SITE_METADATA } from '@/data/site-metadata'
 import clsx from 'clsx'
@@ -19,7 +20,12 @@ const Header = () => {
 
   return (
     <header className={headerClass}>
-      <Link href="/" aria-label={SITE_METADATA.headerTitle} className="flex items-center">
+      <Link
+        href="/"
+        aria-label={SITE_METADATA.headerTitle}
+        className="flex items-center"
+        data-umami-event="header-home-clicked"
+      >
         <Image
           className="mr-3 h-10 w-10 rounded-full"
           src="/images/jasoneastburn-avatar.jpg"
@@ -41,6 +47,7 @@ const Header = () => {
               key={title}
               href={href}
               className="hover:text-primary-500 dark:hover:text-primary-400 px-3 py-1 font-medium"
+              data-umami-event={`header-${lowercaseAndHyphenate(title)}-clicked`}
             >
               {title}
             </Link>

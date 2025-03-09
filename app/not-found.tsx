@@ -18,6 +18,7 @@ export default function NotFound() {
         <Link
           href="/"
           className="inline-flex items-center justify-center rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-xs transition-colors duration-150 hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none dark:hover:bg-blue-500"
+          data-umami-event="page-not-found-home-clicked"
         >
           Back to homepage
         </Link>

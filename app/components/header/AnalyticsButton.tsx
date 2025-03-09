@@ -6,7 +6,7 @@ const AnalyticsButton = () => {
       aria-label="Open analytics"
       type="button"
       className="hover:text-primary-500 dark:hover:text-primary-400"
-      data-umami-event="view-analytics"
+      data-umami-event="umami-analytics-visited"
       onClick={() => window.open(SITE_METADATA.analytics.umamiAnalytics.analyticsUrl, '_blank')}
     >
       <svg

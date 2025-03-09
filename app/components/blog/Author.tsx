@@ -1,6 +1,7 @@
 import { Image } from '@/app/components/ui/Image'
 import { Link } from '@/app/components/ui/Link'
 import type { CoreContent } from '@/app/models/mdx'
+import { lowercaseAndHyphenate } from '@/app/utils/strings'
 import { type Author } from 'contentlayer/generated'
 
 interface AuthorsProps {
@@ -31,6 +32,7 @@ export function Author({ authors, className }: AuthorsProps) {
                   <Link
                     href={x}
                     className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    data-umami-event={`author-${lowercaseAndHyphenate(name)}-x-visited`}
                   >
                     {x.replace(/https:\/\/(x|twitter)\.com\//, '@')}
                   </Link>

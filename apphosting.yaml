@@ -27,6 +27,18 @@ env:
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
     secret: firebase-measurement-id
 
+  - variable: NEXT_PUBLIC_GISCUS_REPO
+    secret: giscus-repo
+
+  - variable: NEXT_PUBLIC_GISCUS_REPOSITORY_ID
+    secret: giscus-repository-id
+
+  - variable: NEXT_PUBLIC_GISCUS_CATEGORY
+    secret: giscus-category
+
+  - variable: NEXT_PUBLIC_GISCUS_CATEGORY_ID
+    secret: giscus-category-id
+
   - variable: DATABASE_URL
     secret: database-url
 

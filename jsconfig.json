@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/app/*": ["app/*"],
+      "@/app/api/*": ["app/api/*"],
+      "@/app/components/*": ["app/components/*"],
+      "@/app/css/*": ["app/css/*"],
+      "@/app/layouts/*": ["app/layouts/*"],
+      "@/app/models/*": ["app/models/*"],
+      "@/app/utils/*": ["app/utils/*"],
+      "@/data/*": ["data/*"],
+      "@/database/*": ["database/*"],
+      "@/json/*": ["json/*"],
+      "@/lib/*": ["lib/*"],
+      "@/public/*": ["pubic/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "pliny/*": ["node_modules/pliny/*"]
+    }
+  }
+}

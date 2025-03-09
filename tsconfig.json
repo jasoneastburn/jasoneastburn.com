@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "composite": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "target": "ES6",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/app/*": ["app/*"],
+      "@/app/api/*": ["app/api/*"],
+      "@/app/components/*": ["app/components/*"],
+      "@/app/css/*": ["app/css/*"],
+      "@/app/layouts/*": ["app/layouts/*"],
+      "@/app/models/*": ["app/models/*"],
+      "@/app/utils/*": ["app/utils/*"],
+      "@/data/*": ["data/*"],
+      "@/database/*": ["database/*"],
+      "@/json/*": ["json/*"],
+      "@/lib/*": ["lib/*"],
+      "@/public/*": ["pubic/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "pliny/*": ["node_modules/pliny/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
+  },
+  "include": [
+    "**/*.js",
+    "**/*.json",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated",
+    ".contentlayer/generated/**/*.json",
+    ".next/types/**/*.ts",
+    "next-env.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}

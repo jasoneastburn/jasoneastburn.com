@@ -39,7 +39,7 @@ export default async function Projects() {
 async function ProjectGrid() {
   const projects: Project[] = await loadProjects()
   return (
-    <div className="mt-10 grid grid-cols-2 gap-6 md:gap-10 md:space-y-0">
+    <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10 md:space-y-0">
       {projects.map((d, index) => (
         <ProjectCard
           key={index}

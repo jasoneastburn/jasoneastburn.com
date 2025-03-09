@@ -7,13 +7,6 @@ export default function Footer() {
   return (
     <footer>
       <div className="mt-8 flex flex-col items-center justify-between md:flex-row">
-        <div className="mb-4 flex space-x-2 text-sm">
-          <div className="text-gray-500 dark:text-gray-400">{`© ${new Date().getFullYear()} ${SITE_METADATA.author}`}</div>
-          <div className="text-gray-500 dark:text-gray-400">{` • `}</div>
-          <BuiltWith />
-          <GithubCommit />
-        </div>
-
         <div className="my-2 mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <SocialIcon kind="mail" href={`mailto:${SITE_METADATA.email}`} size={6} />
           <SocialIcon kind="github" href={SITE_METADATA.github} size={6} />
@@ -25,6 +18,14 @@ export default function Footer() {
           <SocialIcon kind="instagram" href={SITE_METADATA.instagram} size={6} />
           <SocialIcon kind="threads" href={SITE_METADATA.threads} size={6} />
           <SocialIcon kind="medium" href={SITE_METADATA.medium} size={6} />
+        </div>
+        <div className="mb-4 flex flex-col items-center text-sm sm:flex-row sm:space-x-2">
+          <div className="mb-2 text-gray-500 md:mb-0 dark:text-gray-400">{`© ${new Date().getFullYear()} ${SITE_METADATA.author}`}</div>
+          <div className="hidden text-gray-500 sm:block dark:text-gray-400">{` • `}</div>{' '}
+          <BuiltWith />
+          <div className="mt-1 sm:mt-0 sm:ml-0">
+            <GithubCommit />
+          </div>
         </div>
       </div>
     </footer>

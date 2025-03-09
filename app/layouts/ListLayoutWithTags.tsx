@@ -28,7 +28,7 @@ export function ListLayoutWithTags({ title, description, posts }: ListLayoutProp
       <div className="flex flex-col-reverse md:flex-row md:gap-x-12">
         <TagsList />
         <div className="flex-grow py-5 md:py-10">
-          <ul className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-8">
+          <ul className="grid grid-cols-1 gap-y-10 md:gap-y-12 lg:grid-cols-2 lg:gap-x-8">
             {posts.map((post) => (
               <li key={post.path}>
                 <PostCardGridView post={post} />

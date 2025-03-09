@@ -20,7 +20,7 @@ export function GithubCommit() {
 
   return (
     <div className="flex items-center">
-      <span className="pr-1"> • </span>
+      <span className="hidden pr-1 text-gray-500 sm:block dark:text-gray-400"> • </span>
       <Link
         href={url}
         className="hover:text-primary-500 dark:hover:text-primary-400 text-gray-500 dark:text-gray-400"

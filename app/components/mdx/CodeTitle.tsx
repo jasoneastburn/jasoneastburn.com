@@ -1,6 +1,6 @@
-import { clsx } from 'clsx'
-import { BrandIcon, BrandsMap } from '@/app/components/ui/BrandIcon'
 import { CopyCodeButton } from '@/app/components/mdx/CopyCodeButton'
+import { BrandIcon, BrandsMap } from '@/app/components/ui/BrandIcon'
+import { clsx } from 'clsx'
 
 const LANGS_MAP: Record<string, keyof typeof BrandsMap> = {
   js: 'Javascript',

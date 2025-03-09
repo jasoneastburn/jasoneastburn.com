@@ -1,7 +1,7 @@
 import BuiltWith from '@/app/components/footer/BuiltWith'
+import { GithubCommit } from '@/app/components/footer/GithubCommit'
 import SocialIcon from '@/app/components/social-icons'
 import { SITE_METADATA } from '@/data/site-metadata'
-import { GithubCommit } from './GithubCommit'
 
 export default function Footer() {
   return (

@@ -1,14 +1,16 @@
+import { BookCover } from '@/app/components/books/BookCover'
+import { BookDetails } from '@/app/components/books/BookDetails'
 import { GradientBorder } from '@/app/components/ui/GradientBorder'
 import { Link } from '@/app/components/ui/Link'
 import { Rating } from '@/app/components/ui/Rating'
+import { TiltedGridBackground } from '@/app/components/ui/TiltedGridBackground'
 import { Twemoji } from '@/app/components/ui/Twemoji'
+import type { Books } from '@/app/models/books'
 import GoodreadsLogo from '../../../public/images/books/goodreads.svg'
-import type { Books } from 'app/models/books'
-import { BookCover } from '@/app/components/books/BookCover'
-import { BookDetails } from '@/app/components/books/BookDetails'
-import { TiltedGridBackground } from '../ui/TiltedGridBackground'
 
 export function BookCard({ book }: { book: Books }) {
+  const goodreadsUrl = getBookUrl(book.content)
+
   return (
     <GradientBorder className="flex flex-col gap-8 rounded-2xl px-3 py-6 md:flex-row md:px-6 dark:bg-white/5">
       <TiltedGridBackground className="inset-0 z-[-1]" />
@@ -27,7 +29,11 @@ export function BookCard({ book }: { book: Books }) {
         </div>
         <div className="flex items-center justify-between">
           <BookMeta book={book} />
-          <BookLink url={getBookUrl(book.content)} />
+          {goodreadsUrl && (
+            <Link href={goodreadsUrl}>
+              <GoodreadsLogo className="text-goodreads h-5 dark:text-gray-100" />
+            </Link>
+          )}
         </div>
       </div>
     </GradientBorder>
@@ -48,23 +54,10 @@ function BookMeta({ book }: { book: Books }) {
   )
 }
 
-function BookLink({ url, className }: { url?: string | null; className?: string }) {
-  if (url) {
-    return (
-      <Link href={url} className={className}>
-        <GoodreadsLogo className="text-goodreads h-5 dark:text-gray-100" />
-      </Link>
-    )
+function getBookUrl(content: string): string | null {
+  const match = content.match(/<a href="([^"]*)">/)
+  if (match && match[1]) {
+    return match[1].split('?')[0]
   }
   return null
-}
-
-function getBookUrl(content: string) {
-  try {
-    const url = content.match(/<a href="([^"]*)">/)?.[1]?.split('?')[0]
-    return url
-  } catch (error) {
-    console.error('Error parsing book URL:', error)
-    return null
-  }
 }

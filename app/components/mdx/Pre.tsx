@@ -1,7 +1,7 @@
 'use client'
 
-import { type ReactNode } from 'react'
 import { CopyCodeButton } from '@/app/components/mdx/CopyCodeButton'
+import { type ReactNode } from 'react'
 
 export function Pre({ children }: { children: ReactNode }) {
   return (

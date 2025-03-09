@@ -1,11 +1,8 @@
-import { clsx } from 'clsx'
-import type { BrandsMap } from '@/app/components/ui/BrandIcon'
-import { BrandIcon } from '@/app/components/ui/BrandIcon'
 import { GradientBorder } from '@/app/components/ui/GradientBorder'
 import { Link } from '@/app/components/ui/Link'
+import { TiltedGridBackground } from '@/app/components/ui/TiltedGridBackground'
 import { SITE_METADATA } from '@/data/site-metadata'
 import Image from 'next/image'
-import { TiltedGridBackground } from '../ui/TiltedGridBackground'
 
 export function ReferralCard({ description, image, link, name }) {
   return (
@@ -14,12 +11,7 @@ export function ReferralCard({ description, image, link, name }) {
       <Link
         href={link}
         title={name}
-        className={clsx([
-          'relative flex h-full rounded-2xl',
-          'bg-zinc-50 dark:bg-white/5',
-          'transition-shadow hover:shadow-md',
-          'hover:shadow-zinc-900/5 dark:hover:shadow-black/15',
-        ])}
+        className="relative flex h-full rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/5 dark:hover:shadow-black/15"
       >
         <div className="relative w-full px-4 pt-10 pb-6">
           <Image

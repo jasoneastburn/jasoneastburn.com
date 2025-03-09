@@ -1,6 +1,4 @@
-import { Link } from '@/app/components/ui/Link'
-import { SITE_METADATA } from '@/data/site-metadata'
-import { BrandIcon } from '../ui/BrandIcon'
+import { BrandIcon } from '@/app/components/ui/BrandIcon'
 import clsx from 'clsx'
 
 const BuiltWith = () => (

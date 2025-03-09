@@ -1,50 +1,46 @@
 'use client'
 
-import { clsx } from 'clsx'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Image } from '@/app/components/ui/Image'
 import { SITE_METADATA } from '@/data/site-metadata'
+import { clsx } from 'clsx'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 export function ProfileCard() {
   const ref = useRef<HTMLDivElement>(null)
-  const [style, setStyle] = useState<React.CSSProperties>({})
+  const [rotation, setRotation] = useState({ x: 0, y: 0 })
 
-  const onMouseMove = useCallback((e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!ref.current || window.innerWidth < 1280) return
 
-    const { clientX, clientY } = e
-    const { width, height, x, y } = ref.current.getBoundingClientRect()
-    const mouseX = Math.abs(clientX - x)
-    const mouseY = Math.abs(clientY - y)
-    const rotateMin = -15
-    const rotateMax = 15
-    const rotateRange = rotateMax - rotateMin
+    const rect = ref.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
 
-    const rotate = {
-      x: rotateMax - (mouseY / height) * rotateRange,
-      y: rotateMin + (mouseX / width) * rotateRange,
-    }
+    const deltaX = e.clientX - centerX
+    const deltaY = e.clientY - centerY
 
-    setStyle({
-      transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-    })
+    const rotateX = (deltaY / (rect.height / 2)) * 15
+    const rotateY = (deltaX / (rect.width / 2)) * -15
+
+    setRotation({ x: rotateX, y: rotateY })
   }, [])
 
-  const onMouseLeave = useCallback(() => {
-    setStyle({ transform: 'rotateX(0deg) rotateY(0deg)' })
+  const handleMouseLeave = useCallback(() => {
+    setRotation({ x: 0, y: 0 })
   }, [])
 
   useEffect(() => {
-    const { current } = ref
-    if (!current) return
-    current.addEventListener('mousemove', onMouseMove)
-    current.addEventListener('mouseleave', onMouseLeave)
+    const currentRef = ref.current
+    if (!currentRef) return
+
+    currentRef.addEventListener('mousemove', handleMouseMove)
+    currentRef.addEventListener('mouseleave', handleMouseLeave)
+
     return () => {
-      if (!current) return
-      current.removeEventListener('mousemove', onMouseMove)
-      current.removeEventListener('mouseleave', onMouseLeave)
+      currentRef.removeEventListener('mousemove', handleMouseMove)
+      currentRef.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [onMouseLeave, onMouseMove])
+  }, [handleMouseMove, handleMouseLeave])
 
   return (
     <div
@@ -53,7 +49,7 @@ export function ProfileCard() {
       ref={ref}
     >
       <div
-        style={style}
+        style={{ transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` }}
         className={clsx(
           'flex flex-col overflow-hidden transition-all duration-200 ease-out md:rounded-lg',
           'shadow-demure dark:bg-dark dark:shadow-mondegreen bg-white',

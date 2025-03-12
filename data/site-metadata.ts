@@ -12,7 +12,7 @@ export const SITE_METADATA = {
 
   socialBanner: 'images/jasoneastburn-avatar.jpg',
   mastodon: '',
-  email: 'jasoneastburn@gmail.com',
+  email: 'jasoneastburn@hotmail.com',
   github: 'https://github.com/jasoneastburn',
   x: 'https://x.com/jasoneastburn',
   facebook: 'https://facebook.com/jasoneastburn',

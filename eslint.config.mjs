@@ -64,6 +64,7 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off',
       'react/no-unescaped-entities': 'off',
       'react/prop-types': 'off',
     },

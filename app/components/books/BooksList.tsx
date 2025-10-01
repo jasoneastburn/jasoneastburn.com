@@ -20,7 +20,7 @@ export function BooksList({ books }: BooksListProps) {
     }
     return books.filter((book) => {
       if (shelf === 'read') {
-        return book.user_shelves === ''
+        return book.user_shelves === 'read'
       }
       return book.user_shelves.includes(shelf)
     })

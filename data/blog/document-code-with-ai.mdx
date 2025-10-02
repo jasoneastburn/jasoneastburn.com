@@ -2,16 +2,16 @@
 title: Document your code with AI
 date: 2025-10-1
 tags: ['ai', 'software development', 'documentation']
-draft: true
-summary: Everyone hates documenting their code, so I lean on AI to do it and it does a great job!
+draft: false
+summary: Everyone hates documenting their code, so train AI once and get perfect, concise documentation forever.
 images: [/images/blog/2025-10-01/banner.jpg]
 ---
 
 ## Don't Dread Documentation
 
-I have two scenarios and we've all experienced one of both of them. Imagine you start a new job, or on a new team, or even take over an existing codebase and you are trying to learn what the heck the app does or what the code is even doing. If only someone had documented...anything! So much time is wasted fumbling through files and code just to figure it out. Hopefully the prior devs had good naming conventions at least. Haven't experienced that? Consider yourself lucky.
+I have two scenarios and we've all experienced one of both of them. Imagine you start a new job, or on a new team, or even take over an existing codebase and you are trying to learn **what the heck the app does** or **what the code is even doing**. If only someone had documented..._anything_! So much time is wasted fumbling through files and code just to figure it out. Hopefully the prior devs had good naming conventions at least. Haven't experienced that? Consider yourself lucky.
 
-However, maybe you got lucky and was able to start a project from scratch. There really isn't anything like it. Then after you spend all those weeks and months getting it done, you're asked to document it. You mean you didn't document your code as you did it? Bummer.
+However, maybe you got lucky and was able to start a project from scratch. There really isn't anything like it. Then after you spend all those weeks and months getting it done, you're asked to document it. You mean you **didn't document your code as you did it**? Bummer.
 
 I have lived both scenarios and am actually in the middle of the second one rewriting a mobile app and changing technologies from a NativeScript (gross 🤢) app to pure native with Kotlin/Jetpack Compose and SwiftUI. After living the first scenario most of my career, I never want to experience that again or when I pass the project on have someone else experience it.
 
@@ -19,7 +19,7 @@ In steps a perfectly good use for AI and I don't think I will ever go back to wr
 
 ### Start with a general prompt
 
-- Document this code
+> Document this code
 
 ```ts:link.tsx showLineNumbers
 import type { LinkProps } from 'next/link'
@@ -50,7 +50,9 @@ export function Link({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnc
 }
 ```
 
-Now this provided a good starting point and documented just about every line of code. You could stop here but this is way too much for me. I mean, you should be writing code that is as readable as possible
+---
+
+Now this provided a good starting point and documented just about every line of code. You could stop here but this is way too much for me. I mean, you should be writing code that is as **readable as possible**.
 
 ```ts:link.tsx showLineNumbers
 import type { LinkProps } from 'next/link'
@@ -120,7 +122,7 @@ export function Link({ href, ...rest }: LinkComponentProps) {
 
 ### Refine your prompt to match your style
 
-- Update documentation to only document class and methods
+> Update documentation to only document class and methods
 
 ````ts:link.tsx showLineNumbers
 import type { LinkProps } from 'next/link'
@@ -188,11 +190,11 @@ export function Link({ href, ...rest }: LinkComponentProps) {
 }
 ````
 
-Now we are getting there. Again, you could stop here and you would probably have better documentation than most projects you'll ever work on. However, the documentation is still pretty long-winded for my taste.
+Now we are getting there. Again, you could stop here and you would probably have better documentation than most projects you'll ever work on. However, the documentation is still pretty **long-winded** for my taste.
 
 ### Time for perfection
 
-- Update documentation to provide more shorter, concise documentation
+> Update documentation to provide more shorter, concise documentation
 
 ```ts:link.tsx showLineNumbers
 import type { LinkProps } from 'next/link'
@@ -245,8 +247,8 @@ export function Link({ href, ...rest }: LinkComponentProps) {
 }
 ```
 
-Now this...this is what I am looking for and you have now trained you AI agent to understand what type of documentation you are looking to add. You can even do this using the free versions of Gemini or ChatGPT. Just save or pin the conversation. Just for good measure, the next few files I would send it, I would ask to create documentation just like the last file and it works perfectly. After a few more, you should just be able to paste a full file without any direction and it will just spit out what you need.
+Now this...**this is what I am looking for** and you have now trained you AI agent to understand what type of documentation you are looking to add. You can even do this using the **free versions of Gemini or ChatGPT**. Just save or pin the conversation. Just for good measure, the next few files I would send it, I would ask to create documentation just like the last file and it works perfectly. After a few more, you should just be able to paste a full file without any direction and it will just spit out what you need.
 
-Obviously with anything AI, it is best to double check its work. I haven't found too many mistakes but you just never know. I can't calculate how much time it has saved me from having to type out documentation and let's be honest, it did a better job than what I probably would have come up with. Plus, how helpful is this going to be for that new hire or the person taking over this app down the road? Invaluable!
+Obviously with anything AI, it is best to double check its work. I haven't found too many mistakes but you just never know. I can't calculate how much time it has saved me from having to type out documentation and let's be honest, it did a better job than what I probably would have come up with. Plus, how helpful is this going to be for that new hire or the person taking over this app down the road? _Invaluable!_
 
 —Jason

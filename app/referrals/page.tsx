@@ -23,7 +23,7 @@ async function ReferralCategory({ category, items }: { category: string; items: 
   return (
     <div key={category} className="mb-12 md:mb-16">
       <h2 className="mb-8 text-2xl font-semibold">{category}</h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-y-16">
         {items.map((referral) => (
           <ReferralCard
             key={referral.id}

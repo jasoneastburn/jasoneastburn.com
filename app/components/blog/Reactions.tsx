@@ -1,22 +1,24 @@
 'use client'
 
 import { Twemoji } from '@/app/components/ui/Twemoji'
-import type { SelectStats, StatsType } from '@/database/schema'
 import { clsx } from 'clsx'
-import { useEffect, useRef, useState } from 'react'
-import { useBlogStats, useUpdateBlogStats } from '../../../hooks/use-blog-stats'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { lowercaseAndHyphenate } from '@/app/utils/strings'
+import { getBlogStats, updateBlogReaction } from '@/lib/firebase/firestore'
 
 const MAX_REACTIONS = 10
+type StatKey = 'loves' | 'applause' | 'bullseyes' | 'ideas' | 'views' | 'shares'
+type StatsMap = Record<StatKey, number>
+type InitialReactionsMap = Record<StatKey, number>
 
-const REACTIONS: Array<{ emoji: string; key: keyof SelectStats }> = [
+const REACTIONS: Array<{ emoji: string; key: StatKey }> = [
   {
     emoji: 'sparkling-heart',
     key: 'loves',
   },
   {
     emoji: 'clapping-hands',
-    key: 'applauses',
+    key: 'applause',
   },
   {
     emoji: 'bullseye',
@@ -28,51 +30,107 @@ const REACTIONS: Array<{ emoji: string; key: keyof SelectStats }> = [
   },
 ]
 
-export function Reactions({
-  type,
-  slug,
-  className,
-}: {
-  type: StatsType
-  slug: string
-  className?: string
-}) {
-  const [stats, isLoading] = useBlogStats(type, slug)
-  const updateReaction = useUpdateBlogStats()
-  const [initialReactions, setInitialReactions] = useState({})
-  const [reactions, setReactions] = useState({})
+export function Reactions({ slug, className }: { slug: string; className?: string }) {
+  const [stats, setStats] = useState<StatsMap | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [initialReactions, setInitialReactions] = useState<InitialReactionsMap | unknown>({})
+  const [localReactions, setLocalReactions] = useState<InitialReactionsMap | unknown>({})
+
+  useEffect(() => {
+    let isMounted = true
+
+    const fetchData = async () => {
+      setIsLoading(true)
+      try {
+        const initialStats = (await getBlogStats(slug)) as StatsMap | null
+        if (isMounted) {
+          setStats(initialStats)
+        }
+      } catch (error) {
+        console.error('Error fetching blog stats:', error)
+        if (isMounted) {
+          setStats(null)
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false)
+        }
+      }
+    }
+    fetchData()
+
+    return () => {
+      isMounted = false
+    }
+  }, [slug])
 
   useEffect(() => {
     try {
-      const data = JSON.parse(localStorage.getItem(`${type}/${slug}`) || '{}')
-      data.loves = data.loves || 0
-      data.applauses = data.applauses || 0
-      data.ideas = data.ideas || 0
-      data.bullseyes = data.bullseyes || 0
-      setInitialReactions(Object.assign({}, data))
-      setReactions(Object.assign({}, data))
-    } catch (e) {
-      /* empty */
-    }
-  }, [slug, type])
+      const data: Partial<InitialReactionsMap> = JSON.parse(
+        localStorage.getItem(`reaction/${slug}`) || '{}'
+      )
 
-  function handleChange(key: string) {
-    updateReaction({ type, slug, [key]: stats[key] + reactions[key] - initialReactions[key] })
-    localStorage.setItem(`${type}/${slug}`, JSON.stringify(reactions))
-  }
+      const defaultData: InitialReactionsMap = REACTIONS.reduce((acc, r) => {
+        acc[r.key] = data[r.key] || 0
+        return acc
+      }, {} as InitialReactionsMap)
+
+      setInitialReactions(defaultData)
+      setLocalReactions(defaultData)
+    } catch (e) {
+      console.error('Error loading local reactions:', e)
+      setInitialReactions({})
+      setLocalReactions({})
+    }
+  }, [slug])
+
+  const handleSaveReactions = useCallback(
+    (key: StatKey) => {
+      if (!stats) return
+
+      const currentLocal = (localReactions as InitialReactionsMap)[key] || 0
+      const initialLocal = (initialReactions as InitialReactionsMap)[key] || 0
+      const delta = currentLocal - initialLocal
+
+      if (delta !== 0) {
+        updateBlogReaction(slug, key, delta)
+          .then(() => {
+            setStats((prevStats) => ({
+              ...(prevStats as StatsMap),
+              [key]: (prevStats as StatsMap)[key] + delta,
+            }))
+            setInitialReactions((prev) => ({ ...prev, [key]: currentLocal }))
+          })
+          .catch((error) => {
+            console.error('Failed to save reaction:', error)
+          })
+      }
+
+      localStorage.setItem(`reaction/${slug}`, JSON.stringify(localReactions))
+    },
+    [slug, stats, initialReactions, localReactions]
+  )
 
   return (
     <div className={clsx('flex items-center gap-6', className)}>
-      {REACTIONS.map(({ key, emoji }) => (
-        <Reaction
-          key={key}
-          emoji={emoji}
-          value={isLoading ? '--' : stats[key] + reactions[key] - initialReactions[key]}
-          reactions={reactions[key]}
-          onReact={(v) => setReactions((r) => ({ ...r, [key]: v }))}
-          onSave={() => handleChange(key)}
-        />
-      ))}
+      {REACTIONS.map(({ key, emoji }) => {
+        const initialCount = (stats ? stats[key] : 0) || 0
+        const localCount = (localReactions as InitialReactionsMap)[key] || 0
+        const initialUserCount = (initialReactions as InitialReactionsMap)[key] || 0
+        const totalValue = initialCount + (localCount - initialUserCount)
+
+        return (
+          <Reaction
+            key={key}
+            emoji={emoji}
+            value={isLoading ? '--' : totalValue}
+            reactions={localCount}
+            onReact={(v) => setLocalReactions((r) => ({ ...r, [key]: v }))}
+            onSave={() => handleSaveReactions(key)}
+          />
+        )
+      })}
     </div>
   )
 }

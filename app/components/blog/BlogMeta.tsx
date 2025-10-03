@@ -1,6 +1,5 @@
 import { ViewsCounter } from '@/app/components/blog/ViewsCounter'
 import { formatDate, getTimeAgo } from '@/app/utils/misc'
-import type { StatsType } from '@/database/schema'
 import type readingTime from 'reading-time'
 
 type BlogMetaProps = {
@@ -8,10 +7,9 @@ type BlogMetaProps = {
   lastmod?: string
   readingTime: ReturnType<typeof readingTime>
   slug: string
-  type: StatsType
 }
 
-export function BlogMeta({ date, lastmod, type, slug, readingTime }: BlogMetaProps) {
+export function BlogMeta({ date, lastmod, slug, readingTime }: BlogMetaProps) {
   return (
     <dl>
       <dt className="sr-only">Published on</dt>
@@ -28,7 +26,7 @@ export function BlogMeta({ date, lastmod, type, slug, readingTime }: BlogMetaPro
         <span className="text-gray-300 dark:text-gray-700">/</span>
         <span>{Math.ceil(readingTime.minutes)} mins read</span>
         <span className="text-gray-300 dark:text-gray-700">/</span>
-        <ViewsCounter type={type} slug={slug} />
+        <ViewsCounter slug={slug} />
       </dd>
     </dl>
   )

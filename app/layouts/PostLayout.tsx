@@ -11,7 +11,6 @@ import { GradientDivider } from '@/app/components/ui/GradientDivider'
 import Tag from '@/app/components/ui/Tag'
 import type { CoreContent } from '@/app/models/mdx'
 import { SITE_METADATA } from '@/data/site-metadata'
-import type { StatsType } from '@/database/schema'
 import type { Blog } from 'contentlayer/generated'
 import type { ReactNode } from 'react'
 
@@ -38,13 +37,7 @@ function PostHeader({ content }: { content: CoreContent<Blog> }) {
         <Banner banner={images?.[0] || SITE_METADATA.socialBanner} />
       </div>
       <div className="flex items-center justify-between pb-4 lg:pt-2">
-        <BlogMeta
-          date={date}
-          lastmod={lastmod}
-          type={type.toLowerCase() as StatsType}
-          slug={slug}
-          readingTime={readingTime}
-        />
+        <BlogMeta date={date} lastmod={lastmod} slug={slug} readingTime={readingTime} />
         <SocialShare
           postUrl={postUrl}
           filePath={filePath}
@@ -65,7 +58,7 @@ function PostSidebar({ content }: { content: CoreContent<Blog> }) {
           <div className="border-b border-gray-200 dark:border-gray-700">
             <TableOfContents toc={toc} />
           </div>
-          <Reactions type={type.toLowerCase() as StatsType} slug={slug} />
+          <Reactions slug={slug} />
         </div>
       </div>
     </div>

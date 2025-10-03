@@ -6,7 +6,6 @@ import { GradientDivider } from '@/app/components/ui/GradientDivider'
 import Tag from '@/app/components/ui/Tag'
 import type { CoreContent } from '@/app/models/mdx'
 import { SITE_METADATA } from '@/data/site-metadata'
-import type { StatsType } from '@/database/schema'
 import type { Blog } from 'contentlayer/generated'
 import type { ReactNode } from 'react'
 
@@ -35,13 +34,7 @@ export function PostSimple({ content, children }: PostSimpleProps) {
           <dl>
             <div>
               <dt className="sr-only">Published on</dt>
-              <BlogMeta
-                date={date}
-                lastmod={lastmod}
-                type={type.toLowerCase() as StatsType}
-                slug={slug}
-                readingTime={readingTime}
-              />
+              <BlogMeta date={date} lastmod={lastmod} slug={slug} readingTime={readingTime} />
             </div>
           </dl>
         </div>

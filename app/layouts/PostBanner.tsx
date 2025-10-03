@@ -8,9 +8,7 @@ import { ScrollButtons } from '@/app/components/blog/ScrollButtons'
 import Tag from '@/app/components/ui/Tag'
 import type { CoreContent } from '@/app/models/mdx'
 import { SITE_METADATA } from '@/data/site-metadata'
-import type { StatsType } from '@/database/schema'
 import type { Blog } from 'contentlayer/generated'
-import { clsx } from 'clsx'
 import React from 'react'
 import type { ReactNode } from 'react'
 
@@ -58,7 +56,6 @@ function PostHeader({
           <BlogMeta
             date={date}
             lastmod={lastmod}
-            type={type.toLowerCase() as StatsType}
             slug={slug}
             readingTime={{ ...readingTime, time: readingTime.minutes * 60 * 1000 }}
           />
